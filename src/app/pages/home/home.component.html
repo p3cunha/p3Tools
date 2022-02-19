@@ -1,0 +1,5 @@
+
+<p *ngFor="let blog of blogList$ | async" (click)="goToPostDetails(blog?.id!)">
+  {{ blog?.name }}
+</p>
+

@@ -1,0 +1,142 @@
+# this is an auto generated file. This will be overwritten
+subscription OnCreateBlog {
+  onCreateBlog {
+    id
+    name
+    posts {
+      nextToken
+    }
+    createdAt
+    updatedAt
+  }
+}
+subscription OnUpdateBlog {
+  onUpdateBlog {
+    id
+    name
+    posts {
+      nextToken
+    }
+    createdAt
+    updatedAt
+  }
+}
+subscription OnDeleteBlog {
+  onDeleteBlog {
+    id
+    name
+    posts {
+      nextToken
+    }
+    createdAt
+    updatedAt
+  }
+}
+subscription OnCreateComment {
+  onCreateComment {
+    id
+    post {
+      id
+      title
+      createdAt
+      updatedAt
+      blogPostsId
+      owner
+    }
+    content
+    createdAt
+    updatedAt
+    postCommentsId
+  }
+}
+subscription OnUpdateComment {
+  onUpdateComment {
+    id
+    post {
+      id
+      title
+      createdAt
+      updatedAt
+      blogPostsId
+      owner
+    }
+    content
+    createdAt
+    updatedAt
+    postCommentsId
+  }
+}
+subscription OnDeleteComment {
+  onDeleteComment {
+    id
+    post {
+      id
+      title
+      createdAt
+      updatedAt
+      blogPostsId
+      owner
+    }
+    content
+    createdAt
+    updatedAt
+    postCommentsId
+  }
+}
+subscription OnCreatePost($owner: String) {
+  onCreatePost(owner: $owner) {
+    id
+    title
+    blog {
+      id
+      name
+      createdAt
+      updatedAt
+    }
+    comments {
+      nextToken
+    }
+    createdAt
+    updatedAt
+    blogPostsId
+    owner
+  }
+}
+subscription OnUpdatePost($owner: String) {
+  onUpdatePost(owner: $owner) {
+    id
+    title
+    blog {
+      id
+      name
+      createdAt
+      updatedAt
+    }
+    comments {
+      nextToken
+    }
+    createdAt
+    updatedAt
+    blogPostsId
+    owner
+  }
+}
+subscription OnDeletePost($owner: String) {
+  onDeletePost(owner: $owner) {
+    id
+    title
+    blog {
+      id
+      name
+      createdAt
+      updatedAt
+    }
+    comments {
+      nextToken
+    }
+    createdAt
+    updatedAt
+    blogPostsId
+    owner
+  }
+}

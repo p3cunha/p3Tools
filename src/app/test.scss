@@ -1,0 +1,18 @@
+@use "@angular/material" as mat;
+@use "sass:map";
+@import "~@angular/material/theming";
+@include mat-core();
+
+$pink: mat-palette($mat-pink);
+$blueGrey: mat-palette($mat-blue-grey);
+$red: mat-palette($mat-red);
+$deepPurple: mat-palette($mat-deep-purple);
+$amber: mat-palette($mat-amber);
+$indigo: mat-palette($mat-indigo);
+$purple: mat-palette($mat-purple);
+$green: mat-palette($mat-green);
+$themeDeepPurpleAmber: mat-light-theme($deepPurple, $amber, $red);
+$themeIndigoPink: mat-light-theme($indigo, $pink, $red);
+$themePinkBlueGrey: mat-dark-theme($pink, $blueGrey, $red);
+$themePurpleGreen: mat-dark-theme($purple, $green, $red);
+@include angular-material-theme($themePurpleGreen);
