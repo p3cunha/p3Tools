@@ -4,71 +4,8 @@
     let-user="user"
     let-signOut="signOut"
   >
-    <mat-drawer-container class="drawer-container" autosize>
-      <nav  class="docs-navbar-header app-nav mat-elevation-z6">
-        <a mat-button href="">
-          <mat-icon> cottage </mat-icon>
-        </a>
-        <div class="flex-spencer"></div>
-        <button
-          mat-icon-button
-          [mat-menu-trigger-for]="themeMenu"
-          aria-label="Select a theme"
-          matTooltip="Select a theme for the documentation"
-        >
-          <mat-icon>format_color_fill</mat-icon>
-        </button>
-
-        <mat-menu
-          #themeMenu="matMenu"
-          xPosition="before"
-          class="docs-theme-picker-menu"
-        >
-          <button
-            mat-menu-item
-            *ngFor="let theme of themes"
-            (click)="selectTheme(theme.name)"
-          >
-            <mat-icon
-              [ngClass]="{ 'docs-theme-selected-icon': currentTheme === theme }"
-              [color]="currentTheme === theme ? 'accent' : undefined"
-            >
-              {{
-                currentTheme === theme
-                  ? "radio_button_checked"
-                  : "radio_button_unchecked"
-              }}
-            </mat-icon>
-            <span>{{ theme.displayName }}</span>
-            <mat-icon
-              [class]="'theme-example-icon ' + theme.name"
-              svgIcon="theme-example"
-            ></mat-icon>
-          </button>
-        </mat-menu>
-
-        <div class="flex-spencer"></div>
-        <a mat-button (click)="drawer.toggle()">
-          <mat-icon> face </mat-icon>
-        </a>
-      </nav>
-      <mat-drawer #drawer class="app-sidenav" mode="side" position="end">
-        <h2 (click)="log(user)">{{ user.username }}</h2>
-        <span *ngIf="showFiller">{{ user.attributes.email }}</span>
-        <button (click)="showFiller = !showFiller" mat-raised-button>
-          <mat-icon>
-            {{
-              !showFiller ? "keyboard_double_arrow_down" : "expand_less"
-            }}</mat-icon
-          >
-        </button>
-        <div class="flex-spencer"></div>
-        <button mat-button (click)="signOut()">Sign Out</button>
-      </mat-drawer>
-
-      <div class="app-container">
+    <p3-container [user]="user" [signOut]="signOut">
         <router-outlet></router-outlet>
-      </div>
-    </mat-drawer-container>
+    </p3-container>
   </ng-template>
 </amplify-authenticator>

@@ -1,0 +1,15 @@
+@use "@angular/material" as mat;
+@import "../../../styles.scss";
+
+.app-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 8px 16px;
+  background: mat.get-color-from-palette($primary);
+
+  a {
+    cursor: pointer;
+    color: white;
+  }
+}

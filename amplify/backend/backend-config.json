@@ -8,17 +8,12 @@
           "defaultAuthentication": {
             "authenticationType": "API_KEY",
             "apiKeyConfig": {
-              "apiKeyExpirationDays": 7
+              "apiKeyExpirationDays": 7,
+              "apiKeyExpirationDate": "2022-03-01T18:32:24.799Z",
+              "description": "da2-em3uwy3bnjd3xjshree57qxlxa"
             }
           },
-          "additionalAuthenticationProviders": [
-            {
-              "authenticationType": "AMAZON_COGNITO_USER_POOLS",
-              "userPoolConfig": {
-                "userPoolId": "authp3tools1ae1a89b"
-              }
-            }
-          ]
+          "additionalAuthenticationProviders": []
         }
       }
     }

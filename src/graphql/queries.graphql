@@ -25,6 +25,40 @@ query ListBlogs(
     nextToken
   }
 }
+query GetPost($id: ID!) {
+  getPost(id: $id) {
+    id
+    title
+    blog {
+      id
+      name
+      createdAt
+      updatedAt
+    }
+    comments {
+      nextToken
+    }
+    createdAt
+    updatedAt
+    blogPostsId
+  }
+}
+query ListPosts(
+  $filter: ModelPostFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listPosts(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      title
+      createdAt
+      updatedAt
+      blogPostsId
+    }
+    nextToken
+  }
+}
 query GetComment($id: ID!) {
   getComment(id: $id) {
     id
@@ -34,7 +68,6 @@ query GetComment($id: ID!) {
       createdAt
       updatedAt
       blogPostsId
-      owner
     }
     content
     createdAt
@@ -54,42 +87,6 @@ query ListComments(
       createdAt
       updatedAt
       postCommentsId
-    }
-    nextToken
-  }
-}
-query GetPost($id: ID!) {
-  getPost(id: $id) {
-    id
-    title
-    blog {
-      id
-      name
-      createdAt
-      updatedAt
-    }
-    comments {
-      nextToken
-    }
-    createdAt
-    updatedAt
-    blogPostsId
-    owner
-  }
-}
-query ListPosts(
-  $filter: ModelPostFilterInput
-  $limit: Int
-  $nextToken: String
-) {
-  listPosts(filter: $filter, limit: $limit, nextToken: $nextToken) {
-    items {
-      id
-      title
-      createdAt
-      updatedAt
-      blogPostsId
-      owner
     }
     nextToken
   }

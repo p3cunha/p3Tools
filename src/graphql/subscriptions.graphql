@@ -32,6 +32,60 @@ subscription OnDeleteBlog {
     updatedAt
   }
 }
+subscription OnCreatePost {
+  onCreatePost {
+    id
+    title
+    blog {
+      id
+      name
+      createdAt
+      updatedAt
+    }
+    comments {
+      nextToken
+    }
+    createdAt
+    updatedAt
+    blogPostsId
+  }
+}
+subscription OnUpdatePost {
+  onUpdatePost {
+    id
+    title
+    blog {
+      id
+      name
+      createdAt
+      updatedAt
+    }
+    comments {
+      nextToken
+    }
+    createdAt
+    updatedAt
+    blogPostsId
+  }
+}
+subscription OnDeletePost {
+  onDeletePost {
+    id
+    title
+    blog {
+      id
+      name
+      createdAt
+      updatedAt
+    }
+    comments {
+      nextToken
+    }
+    createdAt
+    updatedAt
+    blogPostsId
+  }
+}
 subscription OnCreateComment {
   onCreateComment {
     id
@@ -41,7 +95,6 @@ subscription OnCreateComment {
       createdAt
       updatedAt
       blogPostsId
-      owner
     }
     content
     createdAt
@@ -58,7 +111,6 @@ subscription OnUpdateComment {
       createdAt
       updatedAt
       blogPostsId
-      owner
     }
     content
     createdAt
@@ -75,68 +127,10 @@ subscription OnDeleteComment {
       createdAt
       updatedAt
       blogPostsId
-      owner
     }
     content
     createdAt
     updatedAt
     postCommentsId
-  }
-}
-subscription OnCreatePost($owner: String) {
-  onCreatePost(owner: $owner) {
-    id
-    title
-    blog {
-      id
-      name
-      createdAt
-      updatedAt
-    }
-    comments {
-      nextToken
-    }
-    createdAt
-    updatedAt
-    blogPostsId
-    owner
-  }
-}
-subscription OnUpdatePost($owner: String) {
-  onUpdatePost(owner: $owner) {
-    id
-    title
-    blog {
-      id
-      name
-      createdAt
-      updatedAt
-    }
-    comments {
-      nextToken
-    }
-    createdAt
-    updatedAt
-    blogPostsId
-    owner
-  }
-}
-subscription OnDeletePost($owner: String) {
-  onDeletePost(owner: $owner) {
-    id
-    title
-    blog {
-      id
-      name
-      createdAt
-      updatedAt
-    }
-    comments {
-      nextToken
-    }
-    createdAt
-    updatedAt
-    blogPostsId
-    owner
   }
 }

@@ -8,7 +8,7 @@ type Blog @model {
   posts: [Post] @hasMany
 }
 
-type Post @model @auth(rules: [{ allow: owner }]) {
+type Post @model {
   id: ID!
   title: String!
   blog: Blog @belongsTo

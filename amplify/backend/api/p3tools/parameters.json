@@ -2,10 +2,6 @@
   "AppSyncApiName": "p3tools",
   "DynamoDBBillingMode": "PAY_PER_REQUEST",
   "DynamoDBEnableServerSideEncryption": false,
-  "AuthCognitoUserPoolId": {
-    "Fn::GetAtt": [
-      "authp3tools1ae1a89b",
-      "Outputs.UserPoolId"
-    ]
-  }
+  "AuthModeLastUpdated": "2022-02-22T18:32:33.398Z",
+  "CreateAPIKey": 1
 }
