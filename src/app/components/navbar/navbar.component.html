@@ -3,6 +3,9 @@
     <mat-icon> cottage </mat-icon>
   </a>
   <div class="flex-spencer"></div>
+  <mat-icon> attractions </mat-icon>
+  <span>{{(blog$ | async)?.name}}</span>
+  <div class="flex-spencer"></div>
   <a mat-button (click)="drawer.toggle()">
     <mat-icon> face </mat-icon>
   </a>

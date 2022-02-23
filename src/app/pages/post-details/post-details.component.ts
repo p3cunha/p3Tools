@@ -1,6 +1,8 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
-import { filter, pluck, switchMap, tap } from 'rxjs';
+import { APIService } from 'src/app/API.service';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { from, tap } from 'rxjs';
+import { BlogFacade } from 'src/app/store/blog.facade';
 
 @Component({
   selector: 'app-post-details',
@@ -8,13 +10,17 @@ import { filter, pluck, switchMap, tap } from 'rxjs';
   styleUrls: ['./post-details.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class PostDetailsComponent implements OnInit {
-  someShit$ = this.router.events.pipe(
-    filter((event) => event instanceof NavigationEnd),
-    switchMap(() => this.activatedRoute.params.pipe(pluck('id'))),
-    tap(console.log)
-  );
-  constructor(private router: Router, private activatedRoute: ActivatedRoute) {}
+export class PostDetailsComponent  {
+  someShit$ = from(this.api.GetPost((this.activatedRoute.snapshot.params as any).id)).pipe(tap(console.log));
 
-  ngOnInit(): void {}
+  constructor(
+    private blogFacade: BlogFacade,
+    private activatedRoute: ActivatedRoute,
+    private router: Router,
+    private api: APIService
+  ) {}
+
+  navigateBack() {
+    this.router.navigate(['/'])
+  }
 }

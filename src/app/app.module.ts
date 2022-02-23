@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { InjectionToken, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AmplifyAuthenticatorModule } from '@aws-amplify/ui-angular';
 
@@ -11,6 +11,8 @@ import { ThemeStorage } from './shared/theme-picker/theme-storage/theme-storage'
 import { HttpClientModule } from '@angular/common/http';
 import { NavbarModule } from './components/navbar/navbar.component';
 import { AppContainerModule } from './containers/app-container/app-container.module';
+
+export const BLOG_ID_TOKEN = new InjectionToken<string>('');
 
 @NgModule({
   declarations: [AppComponent],
@@ -26,7 +28,7 @@ import { AppContainerModule } from './containers/app-container/app-container.mod
   ],
   providers: [
     StyleManager,
-    ThemeStorage
+    ThemeStorage,
   ],
   bootstrap: [AppComponent],
   exports: [

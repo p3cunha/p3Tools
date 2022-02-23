@@ -1,4 +1,4 @@
-<p *ngFor="let blog of blogList$ | async">
-  <a (click)="goToPostDetails(blog?.id!)"></a>{{ blog?.name }}
-  <button (click)="deleteBlog(blog?.id!)">x</button>
+<p *ngFor="let post of postList$ | async">
+  <a (click)="goToPostDetails(post?.id!)">{{ post?.title }}</a>
+  <!-- <button (click)="deleteBlog(post?.id!)">x</button> -->
 </p>

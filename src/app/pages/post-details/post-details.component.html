@@ -1,4 +1,5 @@
 
+<button (click)="navigateBack()">Back</button>
 <p>
-  {{ someShit$ | async }}
+  {{ (someShit$ | async)?.title }}
 </p>
