@@ -1,6 +1,7 @@
 export type AmplifyDependentResourcesAttributes = {
     "api": {
         "p3tools": {
+            "GraphQLAPIKeyOutput": "string",
             "GraphQLAPIIdOutput": "string",
             "GraphQLAPIEndpointOutput": "string"
         }
@@ -9,6 +10,8 @@ export type AmplifyDependentResourcesAttributes = {
         "p3tools1ae1a89b": {
             "IdentityPoolId": "string",
             "IdentityPoolName": "string",
+            "HostedUIDomain": "string",
+            "OAuthMetadata": "string",
             "UserPoolId": "string",
             "UserPoolArn": "string",
             "UserPoolName": "string",
