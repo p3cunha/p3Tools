@@ -1,5 +1,5 @@
 import { BlogFacade } from './store/blog.facade';
-import { Component, InjectionToken, OnInit } from '@angular/core';
+import { Component, HostListener, InjectionToken, OnInit } from '@angular/core';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -12,5 +12,9 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.blogFacade.loadBlog().subscribe();
     this.blogFacade.loadPosts().subscribe();
+  }
+
+  log(ai: any) {
+    console.log(ai)
   }
 }

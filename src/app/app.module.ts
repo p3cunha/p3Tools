@@ -4,13 +4,12 @@ import { AmplifyAuthenticatorModule } from '@aws-amplify/ui-angular';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { PostDetailsModule } from './pages/post-details/post-details.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StyleManager } from './shared/style-manager';
 import { ThemeStorage } from './shared/theme-picker/theme-storage/theme-storage';
-import { HttpClientModule } from '@angular/common/http';
-import { NavbarModule } from './components/navbar/navbar.component';
 import { AppContainerModule } from './containers/app-container/app-container.module';
+import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
+import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
 
 export const BLOG_ID_TOKEN = new InjectionToken<string>('');
 
@@ -20,18 +19,15 @@ export const BLOG_ID_TOKEN = new InjectionToken<string>('');
     BrowserModule,
     AppRoutingModule,
     AmplifyAuthenticatorModule,
-    PostDetailsModule,
     BrowserAnimationsModule,
-    HttpClientModule,
-    NavbarModule,
-    AppContainerModule
+    AppContainerModule,
+    LoadingBarRouterModule,
+    LoadingBarHttpClientModule
   ],
   providers: [
     StyleManager,
     ThemeStorage,
   ],
   bootstrap: [AppComponent],
-  exports: [
-  ],
 })
 export class AppModule {}

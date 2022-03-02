@@ -48,6 +48,7 @@ mutation CreatePost(
   createPost(input: $input, condition: $condition) {
     id
     title
+    content
     blog {
       id
       name
@@ -69,6 +70,7 @@ mutation UpdatePost(
   updatePost(input: $input, condition: $condition) {
     id
     title
+    content
     blog {
       id
       name
@@ -90,6 +92,7 @@ mutation DeletePost(
   deletePost(input: $input, condition: $condition) {
     id
     title
+    content
     blog {
       id
       name
@@ -113,6 +116,7 @@ mutation CreateComment(
     post {
       id
       title
+      content
       createdAt
       updatedAt
       blogPostsId
@@ -132,6 +136,7 @@ mutation UpdateComment(
     post {
       id
       title
+      content
       createdAt
       updatedAt
       blogPostsId
@@ -151,6 +156,7 @@ mutation DeleteComment(
     post {
       id
       title
+      content
       createdAt
       updatedAt
       blogPostsId

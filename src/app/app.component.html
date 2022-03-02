@@ -1,3 +1,8 @@
+<ngx-loading-bar
+  [includeSpinner]="false"
+  color="#ffff"
+  height=".7px"
+></ngx-loading-bar>
 <amplify-authenticator [socialProviders]="['google']">
   <ng-template
     amplifySlot="authenticated"
@@ -5,7 +10,7 @@
     let-signOut="signOut"
   >
     <p3-container [user]="user" [signOut]="signOut">
-        <router-outlet></router-outlet>
+      <router-outlet></router-outlet>
     </p3-container>
   </ng-template>
 </amplify-authenticator>

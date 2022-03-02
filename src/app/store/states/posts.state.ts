@@ -24,4 +24,22 @@ export class PostState {
   set posts(posts: Post[]) {
     this._posts$.next(posts);
   }
+
+  createPost(post: Post) {
+    const currentValue = this.posts;
+    this.posts = [post, ...currentValue];
+  }
+
+  deletePost(postToRemove: Post) {
+    const currentValue = this.posts;
+    this.posts = currentValue.filter((post) => post !== postToRemove);
+  }
+
+  putPostBack(Todo: Post, index: number) {
+    this.posts = [
+      ...this.posts.slice(0, index),
+      Todo,
+      ...this.posts.slice(index),
+    ];
+  }
 }

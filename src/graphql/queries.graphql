@@ -29,6 +29,7 @@ query GetPost($id: ID!) {
   getPost(id: $id) {
     id
     title
+    content
     blog {
       id
       name
@@ -52,6 +53,7 @@ query ListPosts(
     items {
       id
       title
+      content
       createdAt
       updatedAt
       blogPostsId
@@ -65,6 +67,7 @@ query GetComment($id: ID!) {
     post {
       id
       title
+      content
       createdAt
       updatedAt
       blogPostsId

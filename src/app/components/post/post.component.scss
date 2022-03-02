@@ -1,0 +1,23 @@
+.post-container {
+  max-width: 50rem;
+  margin: 1rem;
+  transition: .2s ease-in-out;
+
+  section {
+    cursor: pointer;
+  }
+
+  &:hover {
+    background-color: #363636;
+  }
+
+  .delete-icon {
+    position: absolute;
+    right: 1%;
+  }
+}
+
+.mat-card > .mat-card-actions:last-child {
+  display: flex;
+  justify-content: flex-end;
+}

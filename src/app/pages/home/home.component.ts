@@ -1,31 +1,20 @@
-import { BlogFacade } from 'src/app/store/blog.facade';
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { NewPostComponent } from './../../components/new-post/new-post.component'
+import { BlogFacade } from 'src/app/store/blog.facade'
+import { Component } from '@angular/core'
+import { MatDialog } from '@angular/material/dialog'
+import { take } from 'rxjs'
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
-export class HomeComponent implements OnInit {
-  postList$ = this.blogFacade.posts$;
+export class HomeComponent {
+  postList$ = this.blogFacade.posts$
 
-  constructor(private blogFacade: BlogFacade, private router: Router) {}
+  constructor(private blogFacade: BlogFacade, private dialog: MatDialog) {}
 
-  ngOnInit(): void {}
-
-  goToPostDetails(id: string) {
-    this.router.navigateByUrl(`postDetails/${id}`);
+  newPost() {
+    this.dialog.open(NewPostComponent)
   }
-
-  // createPost(blog: any) {
-  //   from(this.api.CreatePost(blog)).subscribe();
-  // }
-
-  // deleteBlog(id: string) {
-  //   from(this.api.DeleteBlog({ id }))
-  //     .subscribe
-  //     // () => (this.blogList$ = from(this.api.ListBlogs()).pipe(pluck('items')))
-  //     ();
-  // }
 }

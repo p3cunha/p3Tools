@@ -91,6 +91,7 @@ export type Post = {
   __typename: "Post";
   id: string;
   title: string;
+  content: string;
   blog?: Blog | null;
   comments?: ModelCommentConnection | null;
   createdAt: string;
@@ -126,11 +127,13 @@ export type DeleteBlogInput = {
 export type CreatePostInput = {
   id?: string | null;
   title: string;
+  content: string;
   blogPostsId?: string | null;
 };
 
 export type ModelPostConditionInput = {
   title?: ModelStringInput | null;
+  content?: ModelStringInput | null;
   and?: Array<ModelPostConditionInput | null> | null;
   or?: Array<ModelPostConditionInput | null> | null;
   not?: ModelPostConditionInput | null;
@@ -156,6 +159,7 @@ export type ModelIDInput = {
 export type UpdatePostInput = {
   id: string;
   title?: string | null;
+  content?: string | null;
   blogPostsId?: string | null;
 };
 
@@ -204,6 +208,7 @@ export type ModelBlogConnection = {
 export type ModelPostFilterInput = {
   id?: ModelIDInput | null;
   title?: ModelStringInput | null;
+  content?: ModelStringInput | null;
   and?: Array<ModelPostFilterInput | null> | null;
   or?: Array<ModelPostFilterInput | null> | null;
   not?: ModelPostFilterInput | null;
@@ -259,6 +264,7 @@ export type CreatePostMutation = {
   __typename: "Post";
   id: string;
   title: string;
+  content: string;
   blog?: {
     __typename: "Blog";
     id: string;
@@ -279,6 +285,7 @@ export type UpdatePostMutation = {
   __typename: "Post";
   id: string;
   title: string;
+  content: string;
   blog?: {
     __typename: "Blog";
     id: string;
@@ -299,6 +306,7 @@ export type DeletePostMutation = {
   __typename: "Post";
   id: string;
   title: string;
+  content: string;
   blog?: {
     __typename: "Blog";
     id: string;
@@ -322,6 +330,7 @@ export type CreateCommentMutation = {
     __typename: "Post";
     id: string;
     title: string;
+    content: string;
     createdAt: string;
     updatedAt: string;
     blogPostsId?: string | null;
@@ -339,6 +348,7 @@ export type UpdateCommentMutation = {
     __typename: "Post";
     id: string;
     title: string;
+    content: string;
     createdAt: string;
     updatedAt: string;
     blogPostsId?: string | null;
@@ -356,6 +366,7 @@ export type DeleteCommentMutation = {
     __typename: "Post";
     id: string;
     title: string;
+    content: string;
     createdAt: string;
     updatedAt: string;
     blogPostsId?: string | null;
@@ -394,6 +405,7 @@ export type GetPostQuery = {
   __typename: "Post";
   id: string;
   title: string;
+  content: string;
   blog?: {
     __typename: "Blog";
     id: string;
@@ -416,6 +428,7 @@ export type ListPostsQuery = {
     __typename: "Post";
     id: string;
     title: string;
+    content: string;
     createdAt: string;
     updatedAt: string;
     blogPostsId?: string | null;
@@ -430,6 +443,7 @@ export type GetCommentQuery = {
     __typename: "Post";
     id: string;
     title: string;
+    content: string;
     createdAt: string;
     updatedAt: string;
     blogPostsId?: string | null;
@@ -493,6 +507,7 @@ export type OnCreatePostSubscription = {
   __typename: "Post";
   id: string;
   title: string;
+  content: string;
   blog?: {
     __typename: "Blog";
     id: string;
@@ -513,6 +528,7 @@ export type OnUpdatePostSubscription = {
   __typename: "Post";
   id: string;
   title: string;
+  content: string;
   blog?: {
     __typename: "Blog";
     id: string;
@@ -533,6 +549,7 @@ export type OnDeletePostSubscription = {
   __typename: "Post";
   id: string;
   title: string;
+  content: string;
   blog?: {
     __typename: "Blog";
     id: string;
@@ -556,6 +573,7 @@ export type OnCreateCommentSubscription = {
     __typename: "Post";
     id: string;
     title: string;
+    content: string;
     createdAt: string;
     updatedAt: string;
     blogPostsId?: string | null;
@@ -573,6 +591,7 @@ export type OnUpdateCommentSubscription = {
     __typename: "Post";
     id: string;
     title: string;
+    content: string;
     createdAt: string;
     updatedAt: string;
     blogPostsId?: string | null;
@@ -590,6 +609,7 @@ export type OnDeleteCommentSubscription = {
     __typename: "Post";
     id: string;
     title: string;
+    content: string;
     createdAt: string;
     updatedAt: string;
     blogPostsId?: string | null;
@@ -697,6 +717,7 @@ export class APIService {
           __typename
           id
           title
+          content
           blog {
             __typename
             id
@@ -733,6 +754,7 @@ export class APIService {
           __typename
           id
           title
+          content
           blog {
             __typename
             id
@@ -769,6 +791,7 @@ export class APIService {
           __typename
           id
           title
+          content
           blog {
             __typename
             id
@@ -808,6 +831,7 @@ export class APIService {
             __typename
             id
             title
+            content
             createdAt
             updatedAt
             blogPostsId
@@ -841,6 +865,7 @@ export class APIService {
             __typename
             id
             title
+            content
             createdAt
             updatedAt
             blogPostsId
@@ -874,6 +899,7 @@ export class APIService {
             __typename
             id
             title
+            content
             createdAt
             updatedAt
             blogPostsId
@@ -956,6 +982,7 @@ export class APIService {
           __typename
           id
           title
+          content
           blog {
             __typename
             id
@@ -992,6 +1019,7 @@ export class APIService {
             __typename
             id
             title
+            content
             createdAt
             updatedAt
             blogPostsId
@@ -1023,6 +1051,7 @@ export class APIService {
             __typename
             id
             title
+            content
             createdAt
             updatedAt
             blogPostsId
@@ -1150,6 +1179,7 @@ export class APIService {
           __typename
           id
           title
+          content
           blog {
             __typename
             id
@@ -1180,6 +1210,7 @@ export class APIService {
           __typename
           id
           title
+          content
           blog {
             __typename
             id
@@ -1210,6 +1241,7 @@ export class APIService {
           __typename
           id
           title
+          content
           blog {
             __typename
             id
@@ -1243,6 +1275,7 @@ export class APIService {
             __typename
             id
             title
+            content
             createdAt
             updatedAt
             blogPostsId
@@ -1270,6 +1303,7 @@ export class APIService {
             __typename
             id
             title
+            content
             createdAt
             updatedAt
             blogPostsId
@@ -1297,6 +1331,7 @@ export class APIService {
             __typename
             id
             title
+            content
             createdAt
             updatedAt
             blogPostsId

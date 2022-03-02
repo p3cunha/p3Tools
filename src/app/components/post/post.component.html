@@ -1,0 +1,15 @@
+<mat-card class="post-container">
+  <p3-icon icon="delete" class="delete-icon" (click)="deletePost(post)"></p3-icon>
+  <section (click)="goToPostDetails(post?.id!)">
+    <mat-card-title>{{ post?.title | titlecase }}</mat-card-title>
+    <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+    <mat-card-content>
+      <p>{{ post?.content | titlecase }}</p>
+    </mat-card-content>
+  </section>
+  <mat-divider inset></mat-divider>
+  <mat-card-actions>
+    <p3-icon icon="thumb_up_alt"></p3-icon>
+    <p3-icon icon="share"></p3-icon>
+  </mat-card-actions>
+</mat-card>

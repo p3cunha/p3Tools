@@ -1,4 +1,7 @@
-<p *ngFor="let post of postList$ | async">
-  <a (click)="goToPostDetails(post?.id!)">{{ post?.title }}</a>
-  <!-- <button (click)="deleteBlog(post?.id!)">x</button> -->
-</p>
+<section class="new-post">
+  <button mat-raised-button color="primary" (click)="newPost()">New post</button>
+</section>
+
+<ng-container *ngFor="let post of postList$ | async">
+  <p3-post [post]="post"></p3-post>
+</ng-container>
