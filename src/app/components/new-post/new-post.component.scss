@@ -1,11 +1,6 @@
-::ng-deep .cdk-overlay-pane {
-  width: 80vw;
-}
-
 ::ng-deep .mat-dialog-container {
   display: flex;
   justify-content: center;
-  height: 23rem;
 
   .post-form {
     height: 100%;
@@ -16,7 +11,7 @@
   }
 
   .form-field {
-    min-width: 23rem;
+    min-width: 35vw;
     width: 100%;
   }
 }

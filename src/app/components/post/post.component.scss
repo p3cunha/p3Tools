@@ -1,7 +1,7 @@
 .post-container {
-  max-width: 50rem;
-  margin: 1rem;
-  transition: .2s ease-in-out;
+  transition: 0.2s ease-in-out;
+  display: flex;
+  flex-wrap: wrap;
 
   section {
     cursor: pointer;

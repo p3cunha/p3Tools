@@ -1,7 +1,11 @@
-<section class="new-post">
-  <button mat-raised-button color="primary" (click)="newPost()">New post</button>
-</section>
+<div class="home-container">
+  <button mat-raised-button color="primary" (click)="newPost()">
+    New post
+  </button>
 
-<ng-container *ngFor="let post of postList$ | async">
-  <p3-post [post]="post"></p3-post>
-</ng-container>
+  <div class="posts-container">
+    <ng-container *ngFor="let post of postList$ | async">
+      <p3-post [post]="post"></p3-post>
+    </ng-container>
+  </div>
+</div>
