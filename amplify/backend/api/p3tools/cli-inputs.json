@@ -11,6 +11,11 @@
       "keyDescription": "da2-em3uwy3bnjd3xjshree57qxlxa"
     },
     "conflictResolution": {},
-    "additionalAuthTypes": []
+    "additionalAuthTypes": [
+      {
+        "mode": "AMAZON_COGNITO_USER_POOLS",
+        "cognitoUserPoolId": "authp3tools1ae1a89b"
+      }
+    ]
   }
 }

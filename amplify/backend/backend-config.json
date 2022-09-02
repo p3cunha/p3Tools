@@ -13,13 +13,20 @@
               "description": "da2-em3uwy3bnjd3xjshree57qxlxa"
             }
           },
-          "additionalAuthenticationProviders": []
+          "additionalAuthenticationProviders": [
+            {
+              "authenticationType": "AMAZON_COGNITO_USER_POOLS",
+              "userPoolConfig": {
+                "userPoolId": "authp3tools1ae1a89b"
+              }
+            }
+          ]
         }
       }
     }
   },
   "auth": {
-    "p3tools1ae1a89b": {
+    "p3toolsc69ff5e8": {
       "service": "Cognito",
       "providerPlugin": "awscloudformation",
       "dependsOn": [],

@@ -11,15 +11,15 @@ const isLocalhost = Boolean(
     )
 );
 
-const awsmobile = {
+export const awsmobile = {
   "aws_project_region": "sa-east-1",
   "aws_appsync_graphqlEndpoint": "https://4h25tmpybjexxahhvxrmchpxwq.appsync-api.sa-east-1.amazonaws.com/graphql",
   "aws_appsync_region": "sa-east-1",
   "aws_appsync_authenticationType": "API_KEY",
-  "aws_appsync_apiKey": "da2-lcdcc5x5ljefrj2fsoyisvluuq",
+  "aws_appsync_apiKey": "da2-6fhytgq6dfeerojnhd5ckucan4",
   "aws_cognito_identity_pool_id": "sa-east-1:2cac9dcd-16e0-430e-8ce1-63d582471270",
   "aws_cognito_region": "sa-east-1",
-  "aws_user_pools_id": "sa-east-1_ijzBKUwPR",
+  "aws_user_pools_id": "sa-east-1_ijzBKUwPR_Google",
   "aws_user_pools_web_client_id": "k84969vbp4pt16cc0j5ajrjth",
   "oauth": {
       "domain": "p3toolsf30dd669-f30dd669-dev.auth.sa-east-1.amazoncognito.com",
@@ -54,6 +54,3 @@ const awsmobile = {
       "EMAIL"
   ]
 };
-
-
-export default awsmobile;

@@ -2,12 +2,21 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "newProjectRoot": "projects",
+  "cli": {
+    "packageManager": "npm",
+    "cache": {
+      "enabled": true,
+      "environment": "all",
+      "path": "tmp/cache/.angular"
+    }
+  },
   "projects": {
     "p3Tools": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
-          "style": "scss"
+          "style": "scss",
+          "changeDetection": "OnPush"
         },
         "@schematics/angular:application": {
           "strict": true
