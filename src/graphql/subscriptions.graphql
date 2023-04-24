@@ -1,49 +1,79 @@
 # this is an auto generated file. This will be overwritten
-subscription OnCreateBlog {
-  onCreateBlog {
+subscription OnCreateBlog($filter: ModelSubscriptionBlogFilterInput) {
+  onCreateBlog(filter: $filter) {
     id
     name
     posts {
+      items {
+        id
+        title
+        createdAt
+        updatedAt
+        blogPostsId
+      }
       nextToken
     }
     createdAt
     updatedAt
   }
 }
-subscription OnUpdateBlog {
-  onUpdateBlog {
+subscription OnUpdateBlog($filter: ModelSubscriptionBlogFilterInput) {
+  onUpdateBlog(filter: $filter) {
     id
     name
     posts {
+      items {
+        id
+        title
+        createdAt
+        updatedAt
+        blogPostsId
+      }
       nextToken
     }
     createdAt
     updatedAt
   }
 }
-subscription OnDeleteBlog {
-  onDeleteBlog {
+subscription OnDeleteBlog($filter: ModelSubscriptionBlogFilterInput) {
+  onDeleteBlog(filter: $filter) {
     id
     name
     posts {
+      items {
+        id
+        title
+        createdAt
+        updatedAt
+        blogPostsId
+      }
       nextToken
     }
     createdAt
     updatedAt
   }
 }
-subscription OnCreatePost {
-  onCreatePost {
+subscription OnCreatePost($filter: ModelSubscriptionPostFilterInput) {
+  onCreatePost(filter: $filter) {
     id
     title
-    content
     blog {
       id
       name
+      posts {
+        nextToken
+      }
       createdAt
       updatedAt
     }
     comments {
+      items {
+        id
+        content
+        createdAt
+        updatedAt
+        postCommentsId
+      }
       nextToken
     }
     createdAt
@@ -51,18 +81,27 @@ subscription OnCreatePost {
     blogPostsId
   }
 }
-subscription OnUpdatePost {
-  onUpdatePost {
+subscription OnUpdatePost($filter: ModelSubscriptionPostFilterInput) {
+  onUpdatePost(filter: $filter) {
     id
     title
-    content
     blog {
       id
       name
+      posts {
+        nextToken
+      }
       createdAt
       updatedAt
     }
     comments {
+      items {
+        id
+        content
+        createdAt
+        updatedAt
+        postCommentsId
+      }
       nextToken
     }
     createdAt
@@ -70,18 +109,27 @@ subscription OnUpdatePost {
     blogPostsId
   }
 }
-subscription OnDeletePost {
-  onDeletePost {
+subscription OnDeletePost($filter: ModelSubscriptionPostFilterInput) {
+  onDeletePost(filter: $filter) {
     id
     title
-    content
     blog {
       id
       name
+      posts {
+        nextToken
+      }
       createdAt
       updatedAt
     }
     comments {
+      items {
+        id
+        content
+        createdAt
+        updatedAt
+        postCommentsId
+      }
       nextToken
     }
     createdAt
@@ -89,13 +137,21 @@ subscription OnDeletePost {
     blogPostsId
   }
 }
-subscription OnCreateComment {
-  onCreateComment {
+subscription OnCreateComment($filter: ModelSubscriptionCommentFilterInput) {
+  onCreateComment(filter: $filter) {
     id
     post {
       id
       title
-      content
+      blog {
+        id
+        name
+        createdAt
+        updatedAt
+      }
+      comments {
+        nextToken
+      }
       createdAt
       updatedAt
       blogPostsId
@@ -106,13 +162,21 @@ subscription OnCreateComment {
     postCommentsId
   }
 }
-subscription OnUpdateComment {
-  onUpdateComment {
+subscription OnUpdateComment($filter: ModelSubscriptionCommentFilterInput) {
+  onUpdateComment(filter: $filter) {
     id
     post {
       id
       title
-      content
+      blog {
+        id
+        name
+        createdAt
+        updatedAt
+      }
+      comments {
+        nextToken
+      }
       createdAt
       updatedAt
       blogPostsId
@@ -123,13 +187,21 @@ subscription OnUpdateComment {
     postCommentsId
   }
 }
-subscription OnDeleteComment {
-  onDeleteComment {
+subscription OnDeleteComment($filter: ModelSubscriptionCommentFilterInput) {
+  onDeleteComment(filter: $filter) {
     id
     post {
       id
       title
-      content
+      blog {
+        id
+        name
+        createdAt
+        updatedAt
+      }
+      comments {
+        nextToken
+      }
       createdAt
       updatedAt
       blogPostsId

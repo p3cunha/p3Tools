@@ -11,18 +11,18 @@ const isLocalhost = Boolean(
     )
 );
 
-export const awsmobile = {
+const awsmobile = {
   "aws_project_region": "sa-east-1",
-  "aws_appsync_graphqlEndpoint": "https://4h25tmpybjexxahhvxrmchpxwq.appsync-api.sa-east-1.amazonaws.com/graphql",
+  "aws_appsync_graphqlEndpoint": "https://euxqpmj4wfbqrbqruddc3dpice.appsync-api.sa-east-1.amazonaws.com/graphql",
   "aws_appsync_region": "sa-east-1",
   "aws_appsync_authenticationType": "API_KEY",
-  "aws_appsync_apiKey": "da2-6fhytgq6dfeerojnhd5ckucan4",
-  "aws_cognito_identity_pool_id": "sa-east-1:2cac9dcd-16e0-430e-8ce1-63d582471270",
+  "aws_appsync_apiKey": "da2-t64nov462fb5tep7d64azmp54y",
+  "aws_cognito_identity_pool_id": "sa-east-1:1e0d5242-fe89-41b9-a1e0-211be132680c",
   "aws_cognito_region": "sa-east-1",
-  "aws_user_pools_id": "sa-east-1_ijzBKUwPR_Google",
-  "aws_user_pools_web_client_id": "k84969vbp4pt16cc0j5ajrjth",
+  "aws_user_pools_id": "sa-east-1_QLIn2yLUX",
+  "aws_user_pools_web_client_id": "25utopcu5vo08e3k00mvf45ucc",
   "oauth": {
-      "domain": "p3toolsf30dd669-f30dd669-dev.auth.sa-east-1.amazoncognito.com",
+      "domain": "p3toolsbd442f90-bd442f90-staging.auth.sa-east-1.amazoncognito.com",
       "scope": [
           "phone",
           "email",
@@ -30,15 +30,13 @@ export const awsmobile = {
           "profile",
           "aws.cognito.signin.user.admin"
       ],
-      "redirectSignIn": isLocalhost ? "http://localhost:4200/" : "https://main.deiwqrj6tlhw5.amplifyapp.com/",
-      "redirectSignOut":  isLocalhost ? "http://localhost:4200/" : "https://main.deiwqrj6tlhw5.amplifyapp.com/",
+      "redirectSignIn": isLocalhost ? "http://localhost:4200/" :  "https://main.d11caeat5g3q4m.amplifyapp.com/",
+      "redirectSignOut": isLocalhost ? "http://localhost:4200/" :  "https://main.d11caeat5g3q4m.amplifyapp.com/",
       "responseType": "code"
   },
   "federationTarget": "COGNITO_USER_POOLS",
   "aws_cognito_username_attributes": [],
-  "aws_cognito_social_providers": [
-      "GOOGLE"
-  ],
+  "aws_cognito_social_providers": [],
   "aws_cognito_signup_attributes": [
       "EMAIL"
   ],
@@ -54,3 +52,6 @@ export const awsmobile = {
       "EMAIL"
   ]
 };
+
+
+export default awsmobile;

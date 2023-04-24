@@ -7,6 +7,13 @@ mutation CreateBlog(
     id
     name
     posts {
+      items {
+        id
+        title
+        createdAt
+        updatedAt
+        blogPostsId
+      }
       nextToken
     }
     createdAt
@@ -21,6 +28,13 @@ mutation UpdateBlog(
     id
     name
     posts {
+      items {
+        id
+        title
+        createdAt
+        updatedAt
+        blogPostsId
+      }
       nextToken
     }
     createdAt
@@ -35,6 +49,13 @@ mutation DeleteBlog(
     id
     name
     posts {
+      items {
+        id
+        title
+        createdAt
+        updatedAt
+        blogPostsId
+      }
       nextToken
     }
     createdAt
@@ -48,14 +69,23 @@ mutation CreatePost(
   createPost(input: $input, condition: $condition) {
     id
     title
-    content
     blog {
       id
       name
+      posts {
+        nextToken
+      }
       createdAt
       updatedAt
     }
     comments {
+      items {
+        id
+        content
+        createdAt
+        updatedAt
+        postCommentsId
+      }
       nextToken
     }
     createdAt
@@ -70,14 +100,23 @@ mutation UpdatePost(
   updatePost(input: $input, condition: $condition) {
     id
     title
-    content
     blog {
       id
       name
+      posts {
+        nextToken
+      }
       createdAt
       updatedAt
     }
     comments {
+      items {
+        id
+        content
+        createdAt
+        updatedAt
+        postCommentsId
+      }
       nextToken
     }
     createdAt
@@ -92,14 +131,23 @@ mutation DeletePost(
   deletePost(input: $input, condition: $condition) {
     id
     title
-    content
     blog {
       id
       name
+      posts {
+        nextToken
+      }
       createdAt
       updatedAt
     }
     comments {
+      items {
+        id
+        content
+        createdAt
+        updatedAt
+        postCommentsId
+      }
       nextToken
     }
     createdAt
@@ -116,7 +164,15 @@ mutation CreateComment(
     post {
       id
       title
-      content
+      blog {
+        id
+        name
+        createdAt
+        updatedAt
+      }
+      comments {
+        nextToken
+      }
       createdAt
       updatedAt
       blogPostsId
@@ -136,7 +192,15 @@ mutation UpdateComment(
     post {
       id
       title
-      content
+      blog {
+        id
+        name
+        createdAt
+        updatedAt
+      }
+      comments {
+        nextToken
+      }
       createdAt
       updatedAt
       blogPostsId
@@ -156,7 +220,15 @@ mutation DeleteComment(
     post {
       id
       title
-      content
+      blog {
+        id
+        name
+        createdAt
+        updatedAt
+      }
+      comments {
+        nextToken
+      }
       createdAt
       updatedAt
       blogPostsId

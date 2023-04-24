@@ -13,7 +13,7 @@ export class NewPostComponent {
   postForm: FormGroup = this.fb.group({
     title: ['', [Validators.required]],
     content: ['', [Validators.required]],
-    blogPostsId: this.blogFacade.blog!.id,
+    // blogPostsId: this.blogFacade.blog!.id,
   })
 
   formValid$ = this.postForm.valueChanges.pipe(

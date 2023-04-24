@@ -2,7 +2,7 @@
   "providers": [
     "awscloudformation"
   ],
-  "projectName": "p3Tools",
+  "projectName": "p3tools",
   "version": "3.1",
   "frontend": "javascript",
   "javascript": {

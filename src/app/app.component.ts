@@ -10,8 +10,8 @@ export class AppComponent implements OnInit {
   constructor(private blogFacade: BlogFacade) {}
 
   ngOnInit(): void {
-    this.blogFacade.loadBlog().subscribe();
-    this.blogFacade.loadPosts().subscribe();
+    // this.blogFacade.loadBlog().subscribe();
+    // this.blogFacade.loadPosts().subscribe();
   }
 
   log(ai: any) {

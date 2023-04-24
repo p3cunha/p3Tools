@@ -91,7 +91,6 @@ export type Post = {
   __typename: "Post";
   id: string;
   title: string;
-  content: string;
   blog?: Blog | null;
   comments?: ModelCommentConnection | null;
   createdAt: string;
@@ -127,13 +126,11 @@ export type DeleteBlogInput = {
 export type CreatePostInput = {
   id?: string | null;
   title: string;
-  content: string;
   blogPostsId?: string | null;
 };
 
 export type ModelPostConditionInput = {
   title?: ModelStringInput | null;
-  content?: ModelStringInput | null;
   and?: Array<ModelPostConditionInput | null> | null;
   or?: Array<ModelPostConditionInput | null> | null;
   not?: ModelPostConditionInput | null;
@@ -159,7 +156,6 @@ export type ModelIDInput = {
 export type UpdatePostInput = {
   id: string;
   title?: string | null;
-  content?: string | null;
   blogPostsId?: string | null;
 };
 
@@ -208,7 +204,6 @@ export type ModelBlogConnection = {
 export type ModelPostFilterInput = {
   id?: ModelIDInput | null;
   title?: ModelStringInput | null;
-  content?: ModelStringInput | null;
   and?: Array<ModelPostFilterInput | null> | null;
   or?: Array<ModelPostFilterInput | null> | null;
   not?: ModelPostFilterInput | null;
@@ -224,12 +219,71 @@ export type ModelCommentFilterInput = {
   postCommentsId?: ModelIDInput | null;
 };
 
+export type ModelSubscriptionBlogFilterInput = {
+  id?: ModelSubscriptionIDInput | null;
+  name?: ModelSubscriptionStringInput | null;
+  and?: Array<ModelSubscriptionBlogFilterInput | null> | null;
+  or?: Array<ModelSubscriptionBlogFilterInput | null> | null;
+};
+
+export type ModelSubscriptionIDInput = {
+  ne?: string | null;
+  eq?: string | null;
+  le?: string | null;
+  lt?: string | null;
+  ge?: string | null;
+  gt?: string | null;
+  contains?: string | null;
+  notContains?: string | null;
+  between?: Array<string | null> | null;
+  beginsWith?: string | null;
+  in?: Array<string | null> | null;
+  notIn?: Array<string | null> | null;
+};
+
+export type ModelSubscriptionStringInput = {
+  ne?: string | null;
+  eq?: string | null;
+  le?: string | null;
+  lt?: string | null;
+  ge?: string | null;
+  gt?: string | null;
+  contains?: string | null;
+  notContains?: string | null;
+  between?: Array<string | null> | null;
+  beginsWith?: string | null;
+  in?: Array<string | null> | null;
+  notIn?: Array<string | null> | null;
+};
+
+export type ModelSubscriptionPostFilterInput = {
+  id?: ModelSubscriptionIDInput | null;
+  title?: ModelSubscriptionStringInput | null;
+  and?: Array<ModelSubscriptionPostFilterInput | null> | null;
+  or?: Array<ModelSubscriptionPostFilterInput | null> | null;
+};
+
+export type ModelSubscriptionCommentFilterInput = {
+  id?: ModelSubscriptionIDInput | null;
+  content?: ModelSubscriptionStringInput | null;
+  and?: Array<ModelSubscriptionCommentFilterInput | null> | null;
+  or?: Array<ModelSubscriptionCommentFilterInput | null> | null;
+};
+
 export type CreateBlogMutation = {
   __typename: "Blog";
   id: string;
   name: string;
   posts?: {
     __typename: "ModelPostConnection";
+    items: Array<{
+      __typename: "Post";
+      id: string;
+      title: string;
+      createdAt: string;
+      updatedAt: string;
+      blogPostsId?: string | null;
+    } | null>;
     nextToken?: string | null;
   } | null;
   createdAt: string;
@@ -242,6 +296,14 @@ export type UpdateBlogMutation = {
   name: string;
   posts?: {
     __typename: "ModelPostConnection";
+    items: Array<{
+      __typename: "Post";
+      id: string;
+      title: string;
+      createdAt: string;
+      updatedAt: string;
+      blogPostsId?: string | null;
+    } | null>;
     nextToken?: string | null;
   } | null;
   createdAt: string;
@@ -254,6 +316,14 @@ export type DeleteBlogMutation = {
   name: string;
   posts?: {
     __typename: "ModelPostConnection";
+    items: Array<{
+      __typename: "Post";
+      id: string;
+      title: string;
+      createdAt: string;
+      updatedAt: string;
+      blogPostsId?: string | null;
+    } | null>;
     nextToken?: string | null;
   } | null;
   createdAt: string;
@@ -264,16 +334,27 @@ export type CreatePostMutation = {
   __typename: "Post";
   id: string;
   title: string;
-  content: string;
   blog?: {
     __typename: "Blog";
     id: string;
     name: string;
+    posts?: {
+      __typename: "ModelPostConnection";
+      nextToken?: string | null;
+    } | null;
     createdAt: string;
     updatedAt: string;
   } | null;
   comments?: {
     __typename: "ModelCommentConnection";
+    items: Array<{
+      __typename: "Comment";
+      id: string;
+      content: string;
+      createdAt: string;
+      updatedAt: string;
+      postCommentsId?: string | null;
+    } | null>;
     nextToken?: string | null;
   } | null;
   createdAt: string;
@@ -285,16 +366,27 @@ export type UpdatePostMutation = {
   __typename: "Post";
   id: string;
   title: string;
-  content: string;
   blog?: {
     __typename: "Blog";
     id: string;
     name: string;
+    posts?: {
+      __typename: "ModelPostConnection";
+      nextToken?: string | null;
+    } | null;
     createdAt: string;
     updatedAt: string;
   } | null;
   comments?: {
     __typename: "ModelCommentConnection";
+    items: Array<{
+      __typename: "Comment";
+      id: string;
+      content: string;
+      createdAt: string;
+      updatedAt: string;
+      postCommentsId?: string | null;
+    } | null>;
     nextToken?: string | null;
   } | null;
   createdAt: string;
@@ -306,16 +398,27 @@ export type DeletePostMutation = {
   __typename: "Post";
   id: string;
   title: string;
-  content: string;
   blog?: {
     __typename: "Blog";
     id: string;
     name: string;
+    posts?: {
+      __typename: "ModelPostConnection";
+      nextToken?: string | null;
+    } | null;
     createdAt: string;
     updatedAt: string;
   } | null;
   comments?: {
     __typename: "ModelCommentConnection";
+    items: Array<{
+      __typename: "Comment";
+      id: string;
+      content: string;
+      createdAt: string;
+      updatedAt: string;
+      postCommentsId?: string | null;
+    } | null>;
     nextToken?: string | null;
   } | null;
   createdAt: string;
@@ -330,7 +433,17 @@ export type CreateCommentMutation = {
     __typename: "Post";
     id: string;
     title: string;
-    content: string;
+    blog?: {
+      __typename: "Blog";
+      id: string;
+      name: string;
+      createdAt: string;
+      updatedAt: string;
+    } | null;
+    comments?: {
+      __typename: "ModelCommentConnection";
+      nextToken?: string | null;
+    } | null;
     createdAt: string;
     updatedAt: string;
     blogPostsId?: string | null;
@@ -348,7 +461,17 @@ export type UpdateCommentMutation = {
     __typename: "Post";
     id: string;
     title: string;
-    content: string;
+    blog?: {
+      __typename: "Blog";
+      id: string;
+      name: string;
+      createdAt: string;
+      updatedAt: string;
+    } | null;
+    comments?: {
+      __typename: "ModelCommentConnection";
+      nextToken?: string | null;
+    } | null;
     createdAt: string;
     updatedAt: string;
     blogPostsId?: string | null;
@@ -366,7 +489,17 @@ export type DeleteCommentMutation = {
     __typename: "Post";
     id: string;
     title: string;
-    content: string;
+    blog?: {
+      __typename: "Blog";
+      id: string;
+      name: string;
+      createdAt: string;
+      updatedAt: string;
+    } | null;
+    comments?: {
+      __typename: "ModelCommentConnection";
+      nextToken?: string | null;
+    } | null;
     createdAt: string;
     updatedAt: string;
     blogPostsId?: string | null;
@@ -383,6 +516,14 @@ export type GetBlogQuery = {
   name: string;
   posts?: {
     __typename: "ModelPostConnection";
+    items: Array<{
+      __typename: "Post";
+      id: string;
+      title: string;
+      createdAt: string;
+      updatedAt: string;
+      blogPostsId?: string | null;
+    } | null>;
     nextToken?: string | null;
   } | null;
   createdAt: string;
@@ -395,6 +536,10 @@ export type ListBlogsQuery = {
     __typename: "Blog";
     id: string;
     name: string;
+    posts?: {
+      __typename: "ModelPostConnection";
+      nextToken?: string | null;
+    } | null;
     createdAt: string;
     updatedAt: string;
   } | null>;
@@ -405,16 +550,27 @@ export type GetPostQuery = {
   __typename: "Post";
   id: string;
   title: string;
-  content: string;
   blog?: {
     __typename: "Blog";
     id: string;
     name: string;
+    posts?: {
+      __typename: "ModelPostConnection";
+      nextToken?: string | null;
+    } | null;
     createdAt: string;
     updatedAt: string;
   } | null;
   comments?: {
     __typename: "ModelCommentConnection";
+    items: Array<{
+      __typename: "Comment";
+      id: string;
+      content: string;
+      createdAt: string;
+      updatedAt: string;
+      postCommentsId?: string | null;
+    } | null>;
     nextToken?: string | null;
   } | null;
   createdAt: string;
@@ -428,7 +584,17 @@ export type ListPostsQuery = {
     __typename: "Post";
     id: string;
     title: string;
-    content: string;
+    blog?: {
+      __typename: "Blog";
+      id: string;
+      name: string;
+      createdAt: string;
+      updatedAt: string;
+    } | null;
+    comments?: {
+      __typename: "ModelCommentConnection";
+      nextToken?: string | null;
+    } | null;
     createdAt: string;
     updatedAt: string;
     blogPostsId?: string | null;
@@ -443,7 +609,17 @@ export type GetCommentQuery = {
     __typename: "Post";
     id: string;
     title: string;
-    content: string;
+    blog?: {
+      __typename: "Blog";
+      id: string;
+      name: string;
+      createdAt: string;
+      updatedAt: string;
+    } | null;
+    comments?: {
+      __typename: "ModelCommentConnection";
+      nextToken?: string | null;
+    } | null;
     createdAt: string;
     updatedAt: string;
     blogPostsId?: string | null;
@@ -459,6 +635,14 @@ export type ListCommentsQuery = {
   items: Array<{
     __typename: "Comment";
     id: string;
+    post?: {
+      __typename: "Post";
+      id: string;
+      title: string;
+      createdAt: string;
+      updatedAt: string;
+      blogPostsId?: string | null;
+    } | null;
     content: string;
     createdAt: string;
     updatedAt: string;
@@ -473,6 +657,14 @@ export type OnCreateBlogSubscription = {
   name: string;
   posts?: {
     __typename: "ModelPostConnection";
+    items: Array<{
+      __typename: "Post";
+      id: string;
+      title: string;
+      createdAt: string;
+      updatedAt: string;
+      blogPostsId?: string | null;
+    } | null>;
     nextToken?: string | null;
   } | null;
   createdAt: string;
@@ -485,6 +677,14 @@ export type OnUpdateBlogSubscription = {
   name: string;
   posts?: {
     __typename: "ModelPostConnection";
+    items: Array<{
+      __typename: "Post";
+      id: string;
+      title: string;
+      createdAt: string;
+      updatedAt: string;
+      blogPostsId?: string | null;
+    } | null>;
     nextToken?: string | null;
   } | null;
   createdAt: string;
@@ -497,6 +697,14 @@ export type OnDeleteBlogSubscription = {
   name: string;
   posts?: {
     __typename: "ModelPostConnection";
+    items: Array<{
+      __typename: "Post";
+      id: string;
+      title: string;
+      createdAt: string;
+      updatedAt: string;
+      blogPostsId?: string | null;
+    } | null>;
     nextToken?: string | null;
   } | null;
   createdAt: string;
@@ -507,16 +715,27 @@ export type OnCreatePostSubscription = {
   __typename: "Post";
   id: string;
   title: string;
-  content: string;
   blog?: {
     __typename: "Blog";
     id: string;
     name: string;
+    posts?: {
+      __typename: "ModelPostConnection";
+      nextToken?: string | null;
+    } | null;
     createdAt: string;
     updatedAt: string;
   } | null;
   comments?: {
     __typename: "ModelCommentConnection";
+    items: Array<{
+      __typename: "Comment";
+      id: string;
+      content: string;
+      createdAt: string;
+      updatedAt: string;
+      postCommentsId?: string | null;
+    } | null>;
     nextToken?: string | null;
   } | null;
   createdAt: string;
@@ -528,16 +747,27 @@ export type OnUpdatePostSubscription = {
   __typename: "Post";
   id: string;
   title: string;
-  content: string;
   blog?: {
     __typename: "Blog";
     id: string;
     name: string;
+    posts?: {
+      __typename: "ModelPostConnection";
+      nextToken?: string | null;
+    } | null;
     createdAt: string;
     updatedAt: string;
   } | null;
   comments?: {
     __typename: "ModelCommentConnection";
+    items: Array<{
+      __typename: "Comment";
+      id: string;
+      content: string;
+      createdAt: string;
+      updatedAt: string;
+      postCommentsId?: string | null;
+    } | null>;
     nextToken?: string | null;
   } | null;
   createdAt: string;
@@ -549,16 +779,27 @@ export type OnDeletePostSubscription = {
   __typename: "Post";
   id: string;
   title: string;
-  content: string;
   blog?: {
     __typename: "Blog";
     id: string;
     name: string;
+    posts?: {
+      __typename: "ModelPostConnection";
+      nextToken?: string | null;
+    } | null;
     createdAt: string;
     updatedAt: string;
   } | null;
   comments?: {
     __typename: "ModelCommentConnection";
+    items: Array<{
+      __typename: "Comment";
+      id: string;
+      content: string;
+      createdAt: string;
+      updatedAt: string;
+      postCommentsId?: string | null;
+    } | null>;
     nextToken?: string | null;
   } | null;
   createdAt: string;
@@ -573,7 +814,17 @@ export type OnCreateCommentSubscription = {
     __typename: "Post";
     id: string;
     title: string;
-    content: string;
+    blog?: {
+      __typename: "Blog";
+      id: string;
+      name: string;
+      createdAt: string;
+      updatedAt: string;
+    } | null;
+    comments?: {
+      __typename: "ModelCommentConnection";
+      nextToken?: string | null;
+    } | null;
     createdAt: string;
     updatedAt: string;
     blogPostsId?: string | null;
@@ -591,7 +842,17 @@ export type OnUpdateCommentSubscription = {
     __typename: "Post";
     id: string;
     title: string;
-    content: string;
+    blog?: {
+      __typename: "Blog";
+      id: string;
+      name: string;
+      createdAt: string;
+      updatedAt: string;
+    } | null;
+    comments?: {
+      __typename: "ModelCommentConnection";
+      nextToken?: string | null;
+    } | null;
     createdAt: string;
     updatedAt: string;
     blogPostsId?: string | null;
@@ -609,7 +870,17 @@ export type OnDeleteCommentSubscription = {
     __typename: "Post";
     id: string;
     title: string;
-    content: string;
+    blog?: {
+      __typename: "Blog";
+      id: string;
+      name: string;
+      createdAt: string;
+      updatedAt: string;
+    } | null;
+    comments?: {
+      __typename: "ModelCommentConnection";
+      nextToken?: string | null;
+    } | null;
     createdAt: string;
     updatedAt: string;
     blogPostsId?: string | null;
@@ -635,6 +906,14 @@ export class APIService {
           name
           posts {
             __typename
+            items {
+              __typename
+              id
+              title
+              createdAt
+              updatedAt
+              blogPostsId
+            }
             nextToken
           }
           createdAt
@@ -663,6 +942,14 @@ export class APIService {
           name
           posts {
             __typename
+            items {
+              __typename
+              id
+              title
+              createdAt
+              updatedAt
+              blogPostsId
+            }
             nextToken
           }
           createdAt
@@ -691,6 +978,14 @@ export class APIService {
           name
           posts {
             __typename
+            items {
+              __typename
+              id
+              title
+              createdAt
+              updatedAt
+              blogPostsId
+            }
             nextToken
           }
           createdAt
@@ -717,16 +1012,27 @@ export class APIService {
           __typename
           id
           title
-          content
           blog {
             __typename
             id
             name
+            posts {
+              __typename
+              nextToken
+            }
             createdAt
             updatedAt
           }
           comments {
             __typename
+            items {
+              __typename
+              id
+              content
+              createdAt
+              updatedAt
+              postCommentsId
+            }
             nextToken
           }
           createdAt
@@ -754,16 +1060,27 @@ export class APIService {
           __typename
           id
           title
-          content
           blog {
             __typename
             id
             name
+            posts {
+              __typename
+              nextToken
+            }
             createdAt
             updatedAt
           }
           comments {
             __typename
+            items {
+              __typename
+              id
+              content
+              createdAt
+              updatedAt
+              postCommentsId
+            }
             nextToken
           }
           createdAt
@@ -791,16 +1108,27 @@ export class APIService {
           __typename
           id
           title
-          content
           blog {
             __typename
             id
             name
+            posts {
+              __typename
+              nextToken
+            }
             createdAt
             updatedAt
           }
           comments {
             __typename
+            items {
+              __typename
+              id
+              content
+              createdAt
+              updatedAt
+              postCommentsId
+            }
             nextToken
           }
           createdAt
@@ -831,7 +1159,17 @@ export class APIService {
             __typename
             id
             title
-            content
+            blog {
+              __typename
+              id
+              name
+              createdAt
+              updatedAt
+            }
+            comments {
+              __typename
+              nextToken
+            }
             createdAt
             updatedAt
             blogPostsId
@@ -865,7 +1203,17 @@ export class APIService {
             __typename
             id
             title
-            content
+            blog {
+              __typename
+              id
+              name
+              createdAt
+              updatedAt
+            }
+            comments {
+              __typename
+              nextToken
+            }
             createdAt
             updatedAt
             blogPostsId
@@ -899,7 +1247,17 @@ export class APIService {
             __typename
             id
             title
-            content
+            blog {
+              __typename
+              id
+              name
+              createdAt
+              updatedAt
+            }
+            comments {
+              __typename
+              nextToken
+            }
             createdAt
             updatedAt
             blogPostsId
@@ -929,6 +1287,14 @@ export class APIService {
           name
           posts {
             __typename
+            items {
+              __typename
+              id
+              title
+              createdAt
+              updatedAt
+              blogPostsId
+            }
             nextToken
           }
           createdAt
@@ -955,6 +1321,10 @@ export class APIService {
             __typename
             id
             name
+            posts {
+              __typename
+              nextToken
+            }
             createdAt
             updatedAt
           }
@@ -982,16 +1352,27 @@ export class APIService {
           __typename
           id
           title
-          content
           blog {
             __typename
             id
             name
+            posts {
+              __typename
+              nextToken
+            }
             createdAt
             updatedAt
           }
           comments {
             __typename
+            items {
+              __typename
+              id
+              content
+              createdAt
+              updatedAt
+              postCommentsId
+            }
             nextToken
           }
           createdAt
@@ -1019,7 +1400,17 @@ export class APIService {
             __typename
             id
             title
-            content
+            blog {
+              __typename
+              id
+              name
+              createdAt
+              updatedAt
+            }
+            comments {
+              __typename
+              nextToken
+            }
             createdAt
             updatedAt
             blogPostsId
@@ -1051,7 +1442,17 @@ export class APIService {
             __typename
             id
             title
-            content
+            blog {
+              __typename
+              id
+              name
+              createdAt
+              updatedAt
+            }
+            comments {
+              __typename
+              nextToken
+            }
             createdAt
             updatedAt
             blogPostsId
@@ -1081,6 +1482,14 @@ export class APIService {
           items {
             __typename
             id
+            post {
+              __typename
+              id
+              title
+              createdAt
+              updatedAt
+              blogPostsId
+            }
             content
             createdAt
             updatedAt
@@ -1104,178 +1513,288 @@ export class APIService {
     )) as any;
     return <ListCommentsQuery>response.data.listComments;
   }
-  OnCreateBlogListener: Observable<
+  OnCreateBlogListener(
+    filter?: ModelSubscriptionBlogFilterInput
+  ): Observable<
     SubscriptionResponse<Pick<__SubscriptionContainer, "onCreateBlog">>
-  > = API.graphql(
-    graphqlOperation(
-      `subscription OnCreateBlog {
-        onCreateBlog {
+  > {
+    const statement = `subscription OnCreateBlog($filter: ModelSubscriptionBlogFilterInput) {
+        onCreateBlog(filter: $filter) {
           __typename
           id
           name
           posts {
             __typename
+            items {
+              __typename
+              id
+              title
+              createdAt
+              updatedAt
+              blogPostsId
+            }
             nextToken
           }
           createdAt
           updatedAt
         }
-      }`
-    )
-  ) as Observable<
-    SubscriptionResponse<Pick<__SubscriptionContainer, "onCreateBlog">>
-  >;
+      }`;
+    const gqlAPIServiceArguments: any = {};
+    if (filter) {
+      gqlAPIServiceArguments.filter = filter;
+    }
+    return API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    ) as Observable<
+      SubscriptionResponse<Pick<__SubscriptionContainer, "onCreateBlog">>
+    >;
+  }
 
-  OnUpdateBlogListener: Observable<
+  OnUpdateBlogListener(
+    filter?: ModelSubscriptionBlogFilterInput
+  ): Observable<
     SubscriptionResponse<Pick<__SubscriptionContainer, "onUpdateBlog">>
-  > = API.graphql(
-    graphqlOperation(
-      `subscription OnUpdateBlog {
-        onUpdateBlog {
+  > {
+    const statement = `subscription OnUpdateBlog($filter: ModelSubscriptionBlogFilterInput) {
+        onUpdateBlog(filter: $filter) {
           __typename
           id
           name
           posts {
             __typename
+            items {
+              __typename
+              id
+              title
+              createdAt
+              updatedAt
+              blogPostsId
+            }
             nextToken
           }
           createdAt
           updatedAt
         }
-      }`
-    )
-  ) as Observable<
-    SubscriptionResponse<Pick<__SubscriptionContainer, "onUpdateBlog">>
-  >;
+      }`;
+    const gqlAPIServiceArguments: any = {};
+    if (filter) {
+      gqlAPIServiceArguments.filter = filter;
+    }
+    return API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    ) as Observable<
+      SubscriptionResponse<Pick<__SubscriptionContainer, "onUpdateBlog">>
+    >;
+  }
 
-  OnDeleteBlogListener: Observable<
+  OnDeleteBlogListener(
+    filter?: ModelSubscriptionBlogFilterInput
+  ): Observable<
     SubscriptionResponse<Pick<__SubscriptionContainer, "onDeleteBlog">>
-  > = API.graphql(
-    graphqlOperation(
-      `subscription OnDeleteBlog {
-        onDeleteBlog {
+  > {
+    const statement = `subscription OnDeleteBlog($filter: ModelSubscriptionBlogFilterInput) {
+        onDeleteBlog(filter: $filter) {
           __typename
           id
           name
           posts {
             __typename
+            items {
+              __typename
+              id
+              title
+              createdAt
+              updatedAt
+              blogPostsId
+            }
             nextToken
           }
           createdAt
           updatedAt
         }
-      }`
-    )
-  ) as Observable<
-    SubscriptionResponse<Pick<__SubscriptionContainer, "onDeleteBlog">>
-  >;
+      }`;
+    const gqlAPIServiceArguments: any = {};
+    if (filter) {
+      gqlAPIServiceArguments.filter = filter;
+    }
+    return API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    ) as Observable<
+      SubscriptionResponse<Pick<__SubscriptionContainer, "onDeleteBlog">>
+    >;
+  }
 
-  OnCreatePostListener: Observable<
+  OnCreatePostListener(
+    filter?: ModelSubscriptionPostFilterInput
+  ): Observable<
     SubscriptionResponse<Pick<__SubscriptionContainer, "onCreatePost">>
-  > = API.graphql(
-    graphqlOperation(
-      `subscription OnCreatePost {
-        onCreatePost {
+  > {
+    const statement = `subscription OnCreatePost($filter: ModelSubscriptionPostFilterInput) {
+        onCreatePost(filter: $filter) {
           __typename
           id
           title
-          content
           blog {
             __typename
             id
             name
+            posts {
+              __typename
+              nextToken
+            }
             createdAt
             updatedAt
           }
           comments {
             __typename
+            items {
+              __typename
+              id
+              content
+              createdAt
+              updatedAt
+              postCommentsId
+            }
             nextToken
           }
           createdAt
           updatedAt
           blogPostsId
         }
-      }`
-    )
-  ) as Observable<
-    SubscriptionResponse<Pick<__SubscriptionContainer, "onCreatePost">>
-  >;
+      }`;
+    const gqlAPIServiceArguments: any = {};
+    if (filter) {
+      gqlAPIServiceArguments.filter = filter;
+    }
+    return API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    ) as Observable<
+      SubscriptionResponse<Pick<__SubscriptionContainer, "onCreatePost">>
+    >;
+  }
 
-  OnUpdatePostListener: Observable<
+  OnUpdatePostListener(
+    filter?: ModelSubscriptionPostFilterInput
+  ): Observable<
     SubscriptionResponse<Pick<__SubscriptionContainer, "onUpdatePost">>
-  > = API.graphql(
-    graphqlOperation(
-      `subscription OnUpdatePost {
-        onUpdatePost {
+  > {
+    const statement = `subscription OnUpdatePost($filter: ModelSubscriptionPostFilterInput) {
+        onUpdatePost(filter: $filter) {
           __typename
           id
           title
-          content
           blog {
             __typename
             id
             name
+            posts {
+              __typename
+              nextToken
+            }
             createdAt
             updatedAt
           }
           comments {
             __typename
+            items {
+              __typename
+              id
+              content
+              createdAt
+              updatedAt
+              postCommentsId
+            }
             nextToken
           }
           createdAt
           updatedAt
           blogPostsId
         }
-      }`
-    )
-  ) as Observable<
-    SubscriptionResponse<Pick<__SubscriptionContainer, "onUpdatePost">>
-  >;
+      }`;
+    const gqlAPIServiceArguments: any = {};
+    if (filter) {
+      gqlAPIServiceArguments.filter = filter;
+    }
+    return API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    ) as Observable<
+      SubscriptionResponse<Pick<__SubscriptionContainer, "onUpdatePost">>
+    >;
+  }
 
-  OnDeletePostListener: Observable<
+  OnDeletePostListener(
+    filter?: ModelSubscriptionPostFilterInput
+  ): Observable<
     SubscriptionResponse<Pick<__SubscriptionContainer, "onDeletePost">>
-  > = API.graphql(
-    graphqlOperation(
-      `subscription OnDeletePost {
-        onDeletePost {
+  > {
+    const statement = `subscription OnDeletePost($filter: ModelSubscriptionPostFilterInput) {
+        onDeletePost(filter: $filter) {
           __typename
           id
           title
-          content
           blog {
             __typename
             id
             name
+            posts {
+              __typename
+              nextToken
+            }
             createdAt
             updatedAt
           }
           comments {
             __typename
+            items {
+              __typename
+              id
+              content
+              createdAt
+              updatedAt
+              postCommentsId
+            }
             nextToken
           }
           createdAt
           updatedAt
           blogPostsId
         }
-      }`
-    )
-  ) as Observable<
-    SubscriptionResponse<Pick<__SubscriptionContainer, "onDeletePost">>
-  >;
+      }`;
+    const gqlAPIServiceArguments: any = {};
+    if (filter) {
+      gqlAPIServiceArguments.filter = filter;
+    }
+    return API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    ) as Observable<
+      SubscriptionResponse<Pick<__SubscriptionContainer, "onDeletePost">>
+    >;
+  }
 
-  OnCreateCommentListener: Observable<
+  OnCreateCommentListener(
+    filter?: ModelSubscriptionCommentFilterInput
+  ): Observable<
     SubscriptionResponse<Pick<__SubscriptionContainer, "onCreateComment">>
-  > = API.graphql(
-    graphqlOperation(
-      `subscription OnCreateComment {
-        onCreateComment {
+  > {
+    const statement = `subscription OnCreateComment($filter: ModelSubscriptionCommentFilterInput) {
+        onCreateComment(filter: $filter) {
           __typename
           id
           post {
             __typename
             id
             title
-            content
+            blog {
+              __typename
+              id
+              name
+              createdAt
+              updatedAt
+            }
+            comments {
+              __typename
+              nextToken
+            }
             createdAt
             updatedAt
             blogPostsId
@@ -1285,25 +1804,42 @@ export class APIService {
           updatedAt
           postCommentsId
         }
-      }`
-    )
-  ) as Observable<
-    SubscriptionResponse<Pick<__SubscriptionContainer, "onCreateComment">>
-  >;
+      }`;
+    const gqlAPIServiceArguments: any = {};
+    if (filter) {
+      gqlAPIServiceArguments.filter = filter;
+    }
+    return API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    ) as Observable<
+      SubscriptionResponse<Pick<__SubscriptionContainer, "onCreateComment">>
+    >;
+  }
 
-  OnUpdateCommentListener: Observable<
+  OnUpdateCommentListener(
+    filter?: ModelSubscriptionCommentFilterInput
+  ): Observable<
     SubscriptionResponse<Pick<__SubscriptionContainer, "onUpdateComment">>
-  > = API.graphql(
-    graphqlOperation(
-      `subscription OnUpdateComment {
-        onUpdateComment {
+  > {
+    const statement = `subscription OnUpdateComment($filter: ModelSubscriptionCommentFilterInput) {
+        onUpdateComment(filter: $filter) {
           __typename
           id
           post {
             __typename
             id
             title
-            content
+            blog {
+              __typename
+              id
+              name
+              createdAt
+              updatedAt
+            }
+            comments {
+              __typename
+              nextToken
+            }
             createdAt
             updatedAt
             blogPostsId
@@ -1313,25 +1849,42 @@ export class APIService {
           updatedAt
           postCommentsId
         }
-      }`
-    )
-  ) as Observable<
-    SubscriptionResponse<Pick<__SubscriptionContainer, "onUpdateComment">>
-  >;
+      }`;
+    const gqlAPIServiceArguments: any = {};
+    if (filter) {
+      gqlAPIServiceArguments.filter = filter;
+    }
+    return API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    ) as Observable<
+      SubscriptionResponse<Pick<__SubscriptionContainer, "onUpdateComment">>
+    >;
+  }
 
-  OnDeleteCommentListener: Observable<
+  OnDeleteCommentListener(
+    filter?: ModelSubscriptionCommentFilterInput
+  ): Observable<
     SubscriptionResponse<Pick<__SubscriptionContainer, "onDeleteComment">>
-  > = API.graphql(
-    graphqlOperation(
-      `subscription OnDeleteComment {
-        onDeleteComment {
+  > {
+    const statement = `subscription OnDeleteComment($filter: ModelSubscriptionCommentFilterInput) {
+        onDeleteComment(filter: $filter) {
           __typename
           id
           post {
             __typename
             id
             title
-            content
+            blog {
+              __typename
+              id
+              name
+              createdAt
+              updatedAt
+            }
+            comments {
+              __typename
+              nextToken
+            }
             createdAt
             updatedAt
             blogPostsId
@@ -1341,9 +1894,15 @@ export class APIService {
           updatedAt
           postCommentsId
         }
-      }`
-    )
-  ) as Observable<
-    SubscriptionResponse<Pick<__SubscriptionContainer, "onDeleteComment">>
-  >;
+      }`;
+    const gqlAPIServiceArguments: any = {};
+    if (filter) {
+      gqlAPIServiceArguments.filter = filter;
+    }
+    return API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    ) as Observable<
+      SubscriptionResponse<Pick<__SubscriptionContainer, "onDeleteComment">>
+    >;
+  }
 }
