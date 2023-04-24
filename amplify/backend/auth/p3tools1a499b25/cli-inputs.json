@@ -1,0 +1,66 @@
+{
+  "version": "1",
+  "cognitoConfig": {
+    "identityPoolName": "p3tools1a499b25_identitypool_1a499b25",
+    "allowUnauthenticatedIdentities": false,
+    "resourceNameTruncated": "p3tool1a499b25",
+    "userPoolName": "p3tools1a499b25_userpool_1a499b25",
+    "autoVerifiedAttributes": [
+      "email"
+    ],
+    "mfaConfiguration": "OFF",
+    "mfaTypes": [
+      "SMS Text Message"
+    ],
+    "smsAuthenticationMessage": "Your authentication code is {####}",
+    "smsVerificationMessage": "Your verification code is {####}",
+    "emailVerificationSubject": "Your verification code",
+    "emailVerificationMessage": "Your verification code is {####}",
+    "defaultPasswordPolicy": false,
+    "passwordPolicyMinLength": 8,
+    "passwordPolicyCharacters": [],
+    "requiredAttributes": [
+      "email"
+    ],
+    "aliasAttributes": [],
+    "userpoolClientGenerateSecret": false,
+    "userpoolClientRefreshTokenValidity": 30,
+    "userpoolClientWriteAttributes": [],
+    "userpoolClientReadAttributes": [],
+    "userpoolClientLambdaRole": "p3tool1a499b25_userpoolclient_lambda_role",
+    "userpoolClientSetAttributes": false,
+    "sharedId": "1a499b25",
+    "resourceName": "p3tools1a499b25",
+    "authSelections": "identityPoolAndUserPool",
+    "useDefault": "manual",
+    "userPoolGroupList": [],
+    "serviceName": "Cognito",
+    "usernameCaseSensitive": false,
+    "useEnabledMfas": true,
+    "authRoleArn": {
+      "Fn::GetAtt": [
+        "AuthRole",
+        "Arn"
+      ]
+    },
+    "unauthRoleArn": {
+      "Fn::GetAtt": [
+        "UnauthRole",
+        "Arn"
+      ]
+    },
+    "breakCircularDependency": true,
+    "dependsOn": [],
+    "userPoolGroups": false,
+    "adminQueries": false,
+    "thirdPartyAuth": false,
+    "authProviders": [],
+    "hostedUI": true,
+    "hostedUIDomainName": "mvr28c6zdotl",
+    "authProvidersUserPool": [
+      "Google"
+    ],
+    "hostedUIProviderMeta": "[{\"ProviderName\":\"Google\",\"authorize_scopes\":\"openid email profile\",\"AttributeMapping\":{\"email\":\"email\",\"username\":\"sub\"}}]",
+    "oAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"https://main.d11caeat5g3q4m.amplifyapp.com/\"],\"LogoutURLs\":[\"https://main.d11caeat5g3q4m.amplifyapp.com/\"]}"
+  }
+}

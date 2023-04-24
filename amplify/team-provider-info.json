@@ -16,9 +16,6 @@
       "api": {
         "p3tools": {}
       },
-      "auth": {
-        "p3tools286bd3d1": {}
-      },
       "function": {
         "p3tools286bd3d1DefineAuthChallenge": {
           "deploymentBucketName": "amplify-p3tools-staging-201644-deployment",
@@ -33,6 +30,9 @@
           "deploymentBucketName": "amplify-p3tools-staging-201644-deployment",
           "s3Key": "amplify-builds/p3tools286bd3d1VerifyAuthChallengeResponse-632f4251737a644d5968-build.zip"
         }
+      },
+      "auth": {
+        "p3tools1a499b25": {}
       }
     }
   }

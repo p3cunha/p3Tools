@@ -18,37 +18,9 @@
     }
   },
   "auth": {
-    "p3tools286bd3d1": {
-      "customAuth": true,
-      "dependsOn": [
-        {
-          "attributes": [
-            "Arn",
-            "Name"
-          ],
-          "category": "function",
-          "resourceName": "p3tools286bd3d1DefineAuthChallenge",
-          "triggerProvider": "Cognito"
-        },
-        {
-          "attributes": [
-            "Arn",
-            "Name"
-          ],
-          "category": "function",
-          "resourceName": "p3tools286bd3d1CreateAuthChallenge",
-          "triggerProvider": "Cognito"
-        },
-        {
-          "attributes": [
-            "Arn",
-            "Name"
-          ],
-          "category": "function",
-          "resourceName": "p3tools286bd3d1VerifyAuthChallengeResponse",
-          "triggerProvider": "Cognito"
-        }
-      ],
+    "p3tools1a499b25": {
+      "customAuth": false,
+      "dependsOn": [],
       "frontendAuthConfig": {
         "mfaConfiguration": "OFF",
         "mfaTypes": [
@@ -61,7 +33,9 @@
         "signupAttributes": [
           "EMAIL"
         ],
-        "socialProviders": [],
+        "socialProviders": [
+          "GOOGLE"
+        ],
         "usernameAttributes": [],
         "verificationMechanisms": [
           "EMAIL"
