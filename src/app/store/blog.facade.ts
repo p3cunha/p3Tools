@@ -20,6 +20,8 @@ import { PostState } from './states/posts.state'
   providedIn: 'root',
 })
 export class BlogFacade {
+  public user: any;
+
   get blog$(): Observable<GetBlogQuery | null> {
     return this.blogState.blog$
   }

@@ -3,9 +3,9 @@
     New post
   </button>
 
-  <div class="posts-container">
-    <ng-container *ngFor="let post of postList$ | async">
-      <p3-post [post]="post"></p3-post>
-    </ng-container>
-  </div>
+  <p3-post
+    class="posts-container"
+    *ngFor="let post of postList$ | async"
+    [post]="post"
+  ></p3-post>
 </div>

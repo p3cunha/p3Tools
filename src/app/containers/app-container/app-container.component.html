@@ -1,8 +1,8 @@
 <mat-drawer-container class="drawer-container" autosize>
   <p3-nav [drawer]="drawer"></p3-nav>
   <mat-drawer #drawer class="drawer-sidenav" mode="side" position="end">
-    <h2 (click)="log(user)">{{ user.username }}</h2>
-    <span *ngIf="showFiller">{{ user.attributes.email }}</span>
+    <h2 (click)="log(_user)">{{ _user.username }}</h2>
+    <span *ngIf="showFiller">{{ _user.attributes.email }}</span>
     <button (click)="showFiller = !showFiller" mat-raised-button>
       <mat-icon>
         {{

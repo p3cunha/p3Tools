@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  blogId: '9ea4773a-43ba-4e8c-871b-d607a72e6b0f'
+  blogId: '1c00db90-f3bc-44db-bf4e-b52ad4d42325'
 };
 
 /*

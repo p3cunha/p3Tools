@@ -5,10 +5,12 @@ import { CommonModule } from '@angular/common';
 import { PostComponent } from './post.component';
 import {MatCardModule} from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
+import { ParsePipe } from 'src/app/directives/parse.directive';
 
 @NgModule({
   declarations: [
-    PostComponent
+    PostComponent,
+    ParsePipe
   ],
   imports: [
     CommonModule,

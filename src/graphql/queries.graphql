@@ -4,13 +4,6 @@ query GetBlog($id: ID!) {
     id
     name
     posts {
-      items {
-        id
-        title
-        createdAt
-        updatedAt
-        blogPostsId
-      }
       nextToken
     }
     createdAt
@@ -26,9 +19,6 @@ query ListBlogs(
     items {
       id
       name
-      posts {
-        nextToken
-      }
       createdAt
       updatedAt
     }
@@ -42,22 +32,14 @@ query GetPost($id: ID!) {
     blog {
       id
       name
-      posts {
-        nextToken
-      }
       createdAt
       updatedAt
     }
     comments {
-      items {
-        id
-        content
-        createdAt
-        updatedAt
-        postCommentsId
-      }
       nextToken
     }
+    content
+    author
     createdAt
     updatedAt
     blogPostsId
@@ -72,15 +54,8 @@ query ListPosts(
     items {
       id
       title
-      blog {
-        id
-        name
-        createdAt
-        updatedAt
-      }
-      comments {
-        nextToken
-      }
+      content
+      author
       createdAt
       updatedAt
       blogPostsId
@@ -94,15 +69,8 @@ query GetComment($id: ID!) {
     post {
       id
       title
-      blog {
-        id
-        name
-        createdAt
-        updatedAt
-      }
-      comments {
-        nextToken
-      }
+      content
+      author
       createdAt
       updatedAt
       blogPostsId
@@ -121,13 +89,6 @@ query ListComments(
   listComments(filter: $filter, limit: $limit, nextToken: $nextToken) {
     items {
       id
-      post {
-        id
-        title
-        createdAt
-        updatedAt
-        blogPostsId
-      }
       content
       createdAt
       updatedAt

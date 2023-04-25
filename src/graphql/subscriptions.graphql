@@ -4,13 +4,6 @@ subscription OnCreateBlog($filter: ModelSubscriptionBlogFilterInput) {
     id
     name
     posts {
-      items {
-        id
-        title
-        createdAt
-        updatedAt
-        blogPostsId
-      }
       nextToken
     }
     createdAt
@@ -22,13 +15,6 @@ subscription OnUpdateBlog($filter: ModelSubscriptionBlogFilterInput) {
     id
     name
     posts {
-      items {
-        id
-        title
-        createdAt
-        updatedAt
-        blogPostsId
-      }
       nextToken
     }
     createdAt
@@ -40,13 +26,6 @@ subscription OnDeleteBlog($filter: ModelSubscriptionBlogFilterInput) {
     id
     name
     posts {
-      items {
-        id
-        title
-        createdAt
-        updatedAt
-        blogPostsId
-      }
       nextToken
     }
     createdAt
@@ -60,22 +39,14 @@ subscription OnCreatePost($filter: ModelSubscriptionPostFilterInput) {
     blog {
       id
       name
-      posts {
-        nextToken
-      }
       createdAt
       updatedAt
     }
     comments {
-      items {
-        id
-        content
-        createdAt
-        updatedAt
-        postCommentsId
-      }
       nextToken
     }
+    content
+    author
     createdAt
     updatedAt
     blogPostsId
@@ -88,22 +59,14 @@ subscription OnUpdatePost($filter: ModelSubscriptionPostFilterInput) {
     blog {
       id
       name
-      posts {
-        nextToken
-      }
       createdAt
       updatedAt
     }
     comments {
-      items {
-        id
-        content
-        createdAt
-        updatedAt
-        postCommentsId
-      }
       nextToken
     }
+    content
+    author
     createdAt
     updatedAt
     blogPostsId
@@ -116,22 +79,14 @@ subscription OnDeletePost($filter: ModelSubscriptionPostFilterInput) {
     blog {
       id
       name
-      posts {
-        nextToken
-      }
       createdAt
       updatedAt
     }
     comments {
-      items {
-        id
-        content
-        createdAt
-        updatedAt
-        postCommentsId
-      }
       nextToken
     }
+    content
+    author
     createdAt
     updatedAt
     blogPostsId
@@ -143,15 +98,8 @@ subscription OnCreateComment($filter: ModelSubscriptionCommentFilterInput) {
     post {
       id
       title
-      blog {
-        id
-        name
-        createdAt
-        updatedAt
-      }
-      comments {
-        nextToken
-      }
+      content
+      author
       createdAt
       updatedAt
       blogPostsId
@@ -168,15 +116,8 @@ subscription OnUpdateComment($filter: ModelSubscriptionCommentFilterInput) {
     post {
       id
       title
-      blog {
-        id
-        name
-        createdAt
-        updatedAt
-      }
-      comments {
-        nextToken
-      }
+      content
+      author
       createdAt
       updatedAt
       blogPostsId
@@ -193,15 +134,8 @@ subscription OnDeleteComment($filter: ModelSubscriptionCommentFilterInput) {
     post {
       id
       title
-      blog {
-        id
-        name
-        createdAt
-        updatedAt
-      }
-      comments {
-        nextToken
-      }
+      content
+      author
       createdAt
       updatedAt
       blogPostsId

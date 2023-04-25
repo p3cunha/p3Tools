@@ -1,5 +1,6 @@
 {
   "AppSyncApiName": "p3tools",
   "DynamoDBBillingMode": "PAY_PER_REQUEST",
-  "DynamoDBEnableServerSideEncryption": false
+  "DynamoDBEnableServerSideEncryption": false,
+  "AuthModeLastUpdated": "2023-04-25T00:07:51.673Z"
 }
