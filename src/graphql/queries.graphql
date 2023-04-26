@@ -40,6 +40,7 @@ query GetPost($id: ID!) {
     }
     content
     author
+    likes
     createdAt
     updatedAt
     blogPostsId
@@ -56,6 +57,7 @@ query ListPosts(
       title
       content
       author
+      likes
       createdAt
       updatedAt
       blogPostsId
@@ -71,6 +73,7 @@ query GetComment($id: ID!) {
       title
       content
       author
+      likes
       createdAt
       updatedAt
       blogPostsId

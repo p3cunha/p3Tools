@@ -18,7 +18,13 @@
   }
 }
 
-.mat-card > .mat-card-actions:last-child {
-  display: flex;
-  justify-content: flex-end;
+.likes-counter {
+  padding: .25rem;
+}
+.mat-card > .mat-card-actions{
+  &:last-child {
+    display: flex;
+    justify-content: flex-end;
+  }
+
 }

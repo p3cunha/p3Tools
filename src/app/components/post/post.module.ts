@@ -6,11 +6,13 @@ import { PostComponent } from './post.component';
 import {MatCardModule} from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
 import { ParsePipe } from 'src/app/directives/parse.directive';
+import { GetLengthPipe } from 'src/app/directives/getLength.directive';
 
 @NgModule({
   declarations: [
     PostComponent,
-    ParsePipe
+    ParsePipe,
+    GetLengthPipe
   ],
   imports: [
     CommonModule,

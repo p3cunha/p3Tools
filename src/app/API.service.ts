@@ -95,6 +95,7 @@ export type Post = {
   comments?: ModelCommentConnection | null;
   content: string;
   author: string;
+  likes?: Array<string | null> | null;
   createdAt: string;
   updatedAt: string;
   blogPostsId?: string | null;
@@ -130,6 +131,7 @@ export type CreatePostInput = {
   title: string;
   content: string;
   author: string;
+  likes?: Array<string | null> | null;
   blogPostsId?: string | null;
 };
 
@@ -137,6 +139,7 @@ export type ModelPostConditionInput = {
   title?: ModelStringInput | null;
   content?: ModelStringInput | null;
   author?: ModelStringInput | null;
+  likes?: ModelStringInput | null;
   and?: Array<ModelPostConditionInput | null> | null;
   or?: Array<ModelPostConditionInput | null> | null;
   not?: ModelPostConditionInput | null;
@@ -164,6 +167,7 @@ export type UpdatePostInput = {
   title?: string | null;
   content?: string | null;
   author?: string | null;
+  likes?: Array<string | null> | null;
   blogPostsId?: string | null;
 };
 
@@ -214,6 +218,7 @@ export type ModelPostFilterInput = {
   title?: ModelStringInput | null;
   content?: ModelStringInput | null;
   author?: ModelStringInput | null;
+  likes?: ModelStringInput | null;
   and?: Array<ModelPostFilterInput | null> | null;
   or?: Array<ModelPostFilterInput | null> | null;
   not?: ModelPostFilterInput | null;
@@ -271,6 +276,7 @@ export type ModelSubscriptionPostFilterInput = {
   title?: ModelSubscriptionStringInput | null;
   content?: ModelSubscriptionStringInput | null;
   author?: ModelSubscriptionStringInput | null;
+  likes?: ModelSubscriptionStringInput | null;
   and?: Array<ModelSubscriptionPostFilterInput | null> | null;
   or?: Array<ModelSubscriptionPostFilterInput | null> | null;
 };
@@ -335,6 +341,7 @@ export type CreatePostMutation = {
   } | null;
   content: string;
   author: string;
+  likes?: Array<string | null> | null;
   createdAt: string;
   updatedAt: string;
   blogPostsId?: string | null;
@@ -357,6 +364,7 @@ export type UpdatePostMutation = {
   } | null;
   content: string;
   author: string;
+  likes?: Array<string | null> | null;
   createdAt: string;
   updatedAt: string;
   blogPostsId?: string | null;
@@ -379,6 +387,7 @@ export type DeletePostMutation = {
   } | null;
   content: string;
   author: string;
+  likes?: Array<string | null> | null;
   createdAt: string;
   updatedAt: string;
   blogPostsId?: string | null;
@@ -393,6 +402,7 @@ export type CreateCommentMutation = {
     title: string;
     content: string;
     author: string;
+    likes?: Array<string | null> | null;
     createdAt: string;
     updatedAt: string;
     blogPostsId?: string | null;
@@ -412,6 +422,7 @@ export type UpdateCommentMutation = {
     title: string;
     content: string;
     author: string;
+    likes?: Array<string | null> | null;
     createdAt: string;
     updatedAt: string;
     blogPostsId?: string | null;
@@ -431,6 +442,7 @@ export type DeleteCommentMutation = {
     title: string;
     content: string;
     author: string;
+    likes?: Array<string | null> | null;
     createdAt: string;
     updatedAt: string;
     blogPostsId?: string | null;
@@ -482,6 +494,7 @@ export type GetPostQuery = {
   } | null;
   content: string;
   author: string;
+  likes?: Array<string | null> | null;
   createdAt: string;
   updatedAt: string;
   blogPostsId?: string | null;
@@ -495,6 +508,7 @@ export type ListPostsQuery = {
     title: string;
     content: string;
     author: string;
+    likes?: Array<string | null> | null;
     createdAt: string;
     updatedAt: string;
     blogPostsId?: string | null;
@@ -511,6 +525,7 @@ export type GetCommentQuery = {
     title: string;
     content: string;
     author: string;
+    likes?: Array<string | null> | null;
     createdAt: string;
     updatedAt: string;
     blogPostsId?: string | null;
@@ -587,6 +602,7 @@ export type OnCreatePostSubscription = {
   } | null;
   content: string;
   author: string;
+  likes?: Array<string | null> | null;
   createdAt: string;
   updatedAt: string;
   blogPostsId?: string | null;
@@ -609,6 +625,7 @@ export type OnUpdatePostSubscription = {
   } | null;
   content: string;
   author: string;
+  likes?: Array<string | null> | null;
   createdAt: string;
   updatedAt: string;
   blogPostsId?: string | null;
@@ -631,6 +648,7 @@ export type OnDeletePostSubscription = {
   } | null;
   content: string;
   author: string;
+  likes?: Array<string | null> | null;
   createdAt: string;
   updatedAt: string;
   blogPostsId?: string | null;
@@ -645,6 +663,7 @@ export type OnCreateCommentSubscription = {
     title: string;
     content: string;
     author: string;
+    likes?: Array<string | null> | null;
     createdAt: string;
     updatedAt: string;
     blogPostsId?: string | null;
@@ -664,6 +683,7 @@ export type OnUpdateCommentSubscription = {
     title: string;
     content: string;
     author: string;
+    likes?: Array<string | null> | null;
     createdAt: string;
     updatedAt: string;
     blogPostsId?: string | null;
@@ -683,6 +703,7 @@ export type OnDeleteCommentSubscription = {
     title: string;
     content: string;
     author: string;
+    likes?: Array<string | null> | null;
     createdAt: string;
     updatedAt: string;
     blogPostsId?: string | null;
@@ -803,6 +824,7 @@ export class APIService {
           }
           content
           author
+          likes
           createdAt
           updatedAt
           blogPostsId
@@ -841,6 +863,7 @@ export class APIService {
           }
           content
           author
+          likes
           createdAt
           updatedAt
           blogPostsId
@@ -879,6 +902,7 @@ export class APIService {
           }
           content
           author
+          likes
           createdAt
           updatedAt
           blogPostsId
@@ -909,6 +933,7 @@ export class APIService {
             title
             content
             author
+            likes
             createdAt
             updatedAt
             blogPostsId
@@ -944,6 +969,7 @@ export class APIService {
             title
             content
             author
+            likes
             createdAt
             updatedAt
             blogPostsId
@@ -979,6 +1005,7 @@ export class APIService {
             title
             content
             author
+            likes
             createdAt
             updatedAt
             blogPostsId
@@ -1074,6 +1101,7 @@ export class APIService {
           }
           content
           author
+          likes
           createdAt
           updatedAt
           blogPostsId
@@ -1101,6 +1129,7 @@ export class APIService {
             title
             content
             author
+            likes
             createdAt
             updatedAt
             blogPostsId
@@ -1134,6 +1163,7 @@ export class APIService {
             title
             content
             author
+            likes
             createdAt
             updatedAt
             blogPostsId
@@ -1296,6 +1326,7 @@ export class APIService {
           }
           content
           author
+          likes
           createdAt
           updatedAt
           blogPostsId
@@ -1335,6 +1366,7 @@ export class APIService {
           }
           content
           author
+          likes
           createdAt
           updatedAt
           blogPostsId
@@ -1374,6 +1406,7 @@ export class APIService {
           }
           content
           author
+          likes
           createdAt
           updatedAt
           blogPostsId
@@ -1405,6 +1438,7 @@ export class APIService {
             title
             content
             author
+            likes
             createdAt
             updatedAt
             blogPostsId
@@ -1441,6 +1475,7 @@ export class APIService {
             title
             content
             author
+            likes
             createdAt
             updatedAt
             blogPostsId
@@ -1477,6 +1512,7 @@ export class APIService {
             title
             content
             author
+            likes
             createdAt
             updatedAt
             blogPostsId

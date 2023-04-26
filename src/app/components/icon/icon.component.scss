@@ -17,4 +17,9 @@ a {
       color: mat.get-color-from-palette($primary);
     }
   }
+
+
+  &.selected {
+    color: mat.get-color-from-palette($primary);
+  }
 }

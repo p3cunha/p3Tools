@@ -11,7 +11,7 @@ import {
 @Component({
   selector: 'p3-icon',
   template: `
-      <a mat-button
+      <a mat-button [ngClass]="{selected}"
         ><mat-icon class="material-icons-outlined"> {{ icon }} </mat-icon></a
       >
     `,
@@ -20,6 +20,7 @@ import {
 })
 export class IconComponent implements OnInit {
   @Input() icon: string = '';
+  @Input() selected: boolean = false;
   constructor() {}
 
   ngOnInit(): void {}

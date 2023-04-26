@@ -30,6 +30,10 @@ export class PostState {
     this.posts = [post, ...currentValue];
   }
 
+  updatePost(post: Post, index: number) {
+    this.posts[index] = post;
+  }
+
   deletePost(postToRemove: Post) {
     const currentValue = this.posts;
     this.posts = currentValue.filter((post) => post !== postToRemove);

@@ -11,6 +11,7 @@ type Post @model @auth(rules: [{allow: public}]) {
   comments: [Comment] @hasMany
   content: String!
   author: AWSJSON!
+  likes: [AWSJSON]
 }
 
 type Comment @model @auth(rules: [{allow: public}]) {

@@ -59,6 +59,7 @@ mutation CreatePost(
     }
     content
     author
+    likes
     createdAt
     updatedAt
     blogPostsId
@@ -82,6 +83,7 @@ mutation UpdatePost(
     }
     content
     author
+    likes
     createdAt
     updatedAt
     blogPostsId
@@ -105,6 +107,7 @@ mutation DeletePost(
     }
     content
     author
+    likes
     createdAt
     updatedAt
     blogPostsId
@@ -121,6 +124,7 @@ mutation CreateComment(
       title
       content
       author
+      likes
       createdAt
       updatedAt
       blogPostsId
@@ -142,6 +146,7 @@ mutation UpdateComment(
       title
       content
       author
+      likes
       createdAt
       updatedAt
       blogPostsId
@@ -163,6 +168,7 @@ mutation DeleteComment(
       title
       content
       author
+      likes
       createdAt
       updatedAt
       blogPostsId
