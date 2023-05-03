@@ -14,6 +14,10 @@ import { Post } from 'src/app/models/post.interface';
 export class PostComponent {
   @Input() post!: Post;
 
+  get showTrash(): boolean {
+    return this.post.author.userDataKey === this.blogFacade.user.userDataKey;
+  }
+
   constructor(private appUtils: AppUtils, private blogFacade: BlogFacade) {}
 
   goToPostDetails(id: string) {
@@ -26,11 +30,7 @@ export class PostComponent {
 
   verifyLike() {
     return Boolean(
-      this.post.likes
-        ?.map((like) => JSON.parse(like!))
-        .find(
-          (user) => user.attributes.sub === this.blogFacade.user.attributes.sub
-        )
+      this.post.likes.find((like) => like === this.blogFacade.user.userDataKey)
     );
   }
 

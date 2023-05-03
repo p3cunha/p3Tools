@@ -10,13 +10,31 @@ type Post @model @auth(rules: [{allow: public}]) {
   blog: Blog @belongsTo
   comments: [Comment] @hasMany
   content: String!
-  author: AWSJSON!
-  likes: [AWSJSON]
+  author: User!
+  likes: [String]
 }
 
 type Comment @model @auth(rules: [{allow: public}]) {
   id: ID!
   post: Post @belongsTo
   content: String!
+  author: User!
 }
- 
+
+type User  {
+  userDataKey: String!
+  username: String!
+  attributes: Attributes!
+}
+
+type Client {
+  endpoint: String
+  fetchOptions: AWSJSON
+}
+
+type Attributes {
+  email: String
+  email_verified: Boolean
+  identities: String
+  sub: String
+}

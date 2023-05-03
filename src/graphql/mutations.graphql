@@ -58,7 +58,10 @@ mutation CreatePost(
       nextToken
     }
     content
-    author
+    author {
+      userDataKey
+      username
+    }
     likes
     createdAt
     updatedAt
@@ -82,7 +85,10 @@ mutation UpdatePost(
       nextToken
     }
     content
-    author
+    author {
+      userDataKey
+      username
+    }
     likes
     createdAt
     updatedAt
@@ -106,7 +112,10 @@ mutation DeletePost(
       nextToken
     }
     content
-    author
+    author {
+      userDataKey
+      username
+    }
     likes
     createdAt
     updatedAt
@@ -123,13 +132,16 @@ mutation CreateComment(
       id
       title
       content
-      author
       likes
       createdAt
       updatedAt
       blogPostsId
     }
     content
+    author {
+      userDataKey
+      username
+    }
     createdAt
     updatedAt
     postCommentsId
@@ -145,13 +157,16 @@ mutation UpdateComment(
       id
       title
       content
-      author
       likes
       createdAt
       updatedAt
       blogPostsId
     }
     content
+    author {
+      userDataKey
+      username
+    }
     createdAt
     updatedAt
     postCommentsId
@@ -167,13 +182,16 @@ mutation DeleteComment(
       id
       title
       content
-      author
       likes
       createdAt
       updatedAt
       blogPostsId
     }
     content
+    author {
+      userDataKey
+      username
+    }
     createdAt
     updatedAt
     postCommentsId

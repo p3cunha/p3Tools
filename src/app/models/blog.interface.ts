@@ -1,7 +1,10 @@
+import { ModelPostConnection } from "../API.service";
+
 export interface Blog {
-    createdAt: string;
-    id: string;
-    name: string;
-    updatedAt: string;
-    __typename: string;
+  __typename: "Blog";
+  id: string;
+  name: string;
+  posts?: ModelPostConnection | null;
+  createdAt: string;
+  updatedAt: string;
 }

@@ -39,7 +39,10 @@ query GetPost($id: ID!) {
       nextToken
     }
     content
-    author
+    author {
+      userDataKey
+      username
+    }
     likes
     createdAt
     updatedAt
@@ -56,7 +59,6 @@ query ListPosts(
       id
       title
       content
-      author
       likes
       createdAt
       updatedAt
@@ -72,13 +74,16 @@ query GetComment($id: ID!) {
       id
       title
       content
-      author
       likes
       createdAt
       updatedAt
       blogPostsId
     }
     content
+    author {
+      userDataKey
+      username
+    }
     createdAt
     updatedAt
     postCommentsId

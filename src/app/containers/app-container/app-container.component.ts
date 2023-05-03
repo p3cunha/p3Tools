@@ -4,6 +4,7 @@ import {
   ChangeDetectionStrategy,
   Input,
 } from '@angular/core';
+import { User } from 'src/app/models/post.interface';
 import { BlogFacade } from 'src/app/store/blog.facade';
 
 @Component({
@@ -14,16 +15,13 @@ import { BlogFacade } from 'src/app/store/blog.facade';
 })
 export class AppContainerComponent implements OnInit {
   showFiller = true;
-  @Input() set user(user: any) {
-    this.blogFacade.user = user;
-    this._user = user;
+  @Input() set user({username, userDataKey, attributes}: User) {
+    this.blogFacade.user = {username, userDataKey, attributes};
   }
-
-  _user: any;
 
   @Input() signOut: any;
 
-  constructor(private blogFacade: BlogFacade) {}
+  constructor(public blogFacade: BlogFacade) {}
 
   ngOnInit(): void {}
 

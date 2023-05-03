@@ -18,8 +18,8 @@
   </div>
   <button
     mat-button
-    [mat-dialog-close]="formValid$ | async"
-    [disabled]="!(formValid$ | async)"
+    [mat-dialog-close]="postForm.valid"
+    [disabled]="!postForm.valid"
     type="submit"
   >
     Create

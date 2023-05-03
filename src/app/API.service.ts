@@ -94,7 +94,7 @@ export type Post = {
   blog?: Blog | null;
   comments?: ModelCommentConnection | null;
   content: string;
-  author: string;
+  author: User;
   likes?: Array<string | null> | null;
   createdAt: string;
   updatedAt: string;
@@ -112,9 +112,25 @@ export type Comment = {
   id: string;
   post?: Post | null;
   content: string;
+  author: User;
   createdAt: string;
   updatedAt: string;
   postCommentsId?: string | null;
+};
+
+export type User = {
+  __typename: "User";
+  userDataKey: string;
+  username: string;
+  attributes: Attributes;
+};
+
+export type Attributes = {
+  __typename: "Attributes";
+  email?: string | null;
+  email_verified?: boolean | null;
+  identities?: string | null;
+  sub?: string | null;
 };
 
 export type UpdateBlogInput = {
@@ -130,15 +146,27 @@ export type CreatePostInput = {
   id?: string | null;
   title: string;
   content: string;
-  author: string;
+  author: UserInput;
   likes?: Array<string | null> | null;
   blogPostsId?: string | null;
+};
+
+export type UserInput = {
+  userDataKey: string;
+  username: string;
+  attributes: AttributesInput;
+};
+
+export type AttributesInput = {
+  email?: string | null;
+  email_verified?: boolean | null;
+  identities?: string | null;
+  sub?: string | null;
 };
 
 export type ModelPostConditionInput = {
   title?: ModelStringInput | null;
   content?: ModelStringInput | null;
-  author?: ModelStringInput | null;
   likes?: ModelStringInput | null;
   and?: Array<ModelPostConditionInput | null> | null;
   or?: Array<ModelPostConditionInput | null> | null;
@@ -166,7 +194,7 @@ export type UpdatePostInput = {
   id: string;
   title?: string | null;
   content?: string | null;
-  author?: string | null;
+  author?: UserInput | null;
   likes?: Array<string | null> | null;
   blogPostsId?: string | null;
 };
@@ -178,6 +206,7 @@ export type DeletePostInput = {
 export type CreateCommentInput = {
   id?: string | null;
   content: string;
+  author: UserInput;
   postCommentsId?: string | null;
 };
 
@@ -192,6 +221,7 @@ export type ModelCommentConditionInput = {
 export type UpdateCommentInput = {
   id: string;
   content?: string | null;
+  author?: UserInput | null;
   postCommentsId?: string | null;
 };
 
@@ -217,7 +247,6 @@ export type ModelPostFilterInput = {
   id?: ModelIDInput | null;
   title?: ModelStringInput | null;
   content?: ModelStringInput | null;
-  author?: ModelStringInput | null;
   likes?: ModelStringInput | null;
   and?: Array<ModelPostFilterInput | null> | null;
   or?: Array<ModelPostFilterInput | null> | null;
@@ -275,7 +304,6 @@ export type ModelSubscriptionPostFilterInput = {
   id?: ModelSubscriptionIDInput | null;
   title?: ModelSubscriptionStringInput | null;
   content?: ModelSubscriptionStringInput | null;
-  author?: ModelSubscriptionStringInput | null;
   likes?: ModelSubscriptionStringInput | null;
   and?: Array<ModelSubscriptionPostFilterInput | null> | null;
   or?: Array<ModelSubscriptionPostFilterInput | null> | null;
@@ -340,7 +368,12 @@ export type CreatePostMutation = {
     nextToken?: string | null;
   } | null;
   content: string;
-  author: string;
+  author: {
+    __typename: "User";
+    userDataKey: string;
+    username: string;
+    attributes: Attributes;
+  };
   likes?: Array<string | null> | null;
   createdAt: string;
   updatedAt: string;
@@ -363,7 +396,12 @@ export type UpdatePostMutation = {
     nextToken?: string | null;
   } | null;
   content: string;
-  author: string;
+  author: {
+    __typename: "User";
+    userDataKey: string;
+    username: string;
+    attributes: Attributes;
+  };
   likes?: Array<string | null> | null;
   createdAt: string;
   updatedAt: string;
@@ -386,7 +424,11 @@ export type DeletePostMutation = {
     nextToken?: string | null;
   } | null;
   content: string;
-  author: string;
+  author: {
+    __typename: "User";
+    userDataKey: string;
+    username: string;
+  };
   likes?: Array<string | null> | null;
   createdAt: string;
   updatedAt: string;
@@ -401,13 +443,17 @@ export type CreateCommentMutation = {
     id: string;
     title: string;
     content: string;
-    author: string;
     likes?: Array<string | null> | null;
     createdAt: string;
     updatedAt: string;
     blogPostsId?: string | null;
   } | null;
   content: string;
+  author: {
+    __typename: "User";
+    userDataKey: string;
+    username: string;
+  };
   createdAt: string;
   updatedAt: string;
   postCommentsId?: string | null;
@@ -421,13 +467,17 @@ export type UpdateCommentMutation = {
     id: string;
     title: string;
     content: string;
-    author: string;
     likes?: Array<string | null> | null;
     createdAt: string;
     updatedAt: string;
     blogPostsId?: string | null;
   } | null;
   content: string;
+  author: {
+    __typename: "User";
+    userDataKey: string;
+    username: string;
+  };
   createdAt: string;
   updatedAt: string;
   postCommentsId?: string | null;
@@ -441,13 +491,17 @@ export type DeleteCommentMutation = {
     id: string;
     title: string;
     content: string;
-    author: string;
     likes?: Array<string | null> | null;
     createdAt: string;
     updatedAt: string;
     blogPostsId?: string | null;
   } | null;
   content: string;
+  author: {
+    __typename: "User";
+    userDataKey: string;
+    username: string;
+  };
   createdAt: string;
   updatedAt: string;
   postCommentsId?: string | null;
@@ -493,7 +547,11 @@ export type GetPostQuery = {
     nextToken?: string | null;
   } | null;
   content: string;
-  author: string;
+  author: {
+    __typename: "User";
+    userDataKey: string;
+    username: string;
+  };
   likes?: Array<string | null> | null;
   createdAt: string;
   updatedAt: string;
@@ -507,7 +565,6 @@ export type ListPostsQuery = {
     id: string;
     title: string;
     content: string;
-    author: string;
     likes?: Array<string | null> | null;
     createdAt: string;
     updatedAt: string;
@@ -524,13 +581,17 @@ export type GetCommentQuery = {
     id: string;
     title: string;
     content: string;
-    author: string;
     likes?: Array<string | null> | null;
     createdAt: string;
     updatedAt: string;
     blogPostsId?: string | null;
   } | null;
   content: string;
+  author: {
+    __typename: "User";
+    userDataKey: string;
+    username: string;
+  };
   createdAt: string;
   updatedAt: string;
   postCommentsId?: string | null;
@@ -601,7 +662,11 @@ export type OnCreatePostSubscription = {
     nextToken?: string | null;
   } | null;
   content: string;
-  author: string;
+  author: {
+    __typename: "User";
+    userDataKey: string;
+    username: string;
+  };
   likes?: Array<string | null> | null;
   createdAt: string;
   updatedAt: string;
@@ -624,7 +689,11 @@ export type OnUpdatePostSubscription = {
     nextToken?: string | null;
   } | null;
   content: string;
-  author: string;
+  author: {
+    __typename: "User";
+    userDataKey: string;
+    username: string;
+  };
   likes?: Array<string | null> | null;
   createdAt: string;
   updatedAt: string;
@@ -647,7 +716,11 @@ export type OnDeletePostSubscription = {
     nextToken?: string | null;
   } | null;
   content: string;
-  author: string;
+  author: {
+    __typename: "User";
+    userDataKey: string;
+    username: string;
+  };
   likes?: Array<string | null> | null;
   createdAt: string;
   updatedAt: string;
@@ -662,13 +735,17 @@ export type OnCreateCommentSubscription = {
     id: string;
     title: string;
     content: string;
-    author: string;
     likes?: Array<string | null> | null;
     createdAt: string;
     updatedAt: string;
     blogPostsId?: string | null;
   } | null;
   content: string;
+  author: {
+    __typename: "User";
+    userDataKey: string;
+    username: string;
+  };
   createdAt: string;
   updatedAt: string;
   postCommentsId?: string | null;
@@ -682,13 +759,17 @@ export type OnUpdateCommentSubscription = {
     id: string;
     title: string;
     content: string;
-    author: string;
     likes?: Array<string | null> | null;
     createdAt: string;
     updatedAt: string;
     blogPostsId?: string | null;
   } | null;
   content: string;
+  author: {
+    __typename: "User";
+    userDataKey: string;
+    username: string;
+  };
   createdAt: string;
   updatedAt: string;
   postCommentsId?: string | null;
@@ -702,13 +783,17 @@ export type OnDeleteCommentSubscription = {
     id: string;
     title: string;
     content: string;
-    author: string;
     likes?: Array<string | null> | null;
     createdAt: string;
     updatedAt: string;
     blogPostsId?: string | null;
   } | null;
   content: string;
+  author: {
+    __typename: "User";
+    userDataKey: string;
+    username: string;
+  };
   createdAt: string;
   updatedAt: string;
   postCommentsId?: string | null;
@@ -823,7 +908,11 @@ export class APIService {
             nextToken
           }
           content
-          author
+          author {
+            __typename
+            userDataKey
+            username
+          }
           likes
           createdAt
           updatedAt
@@ -862,7 +951,11 @@ export class APIService {
             nextToken
           }
           content
-          author
+          author {
+            __typename
+            userDataKey
+            username
+          }
           likes
           createdAt
           updatedAt
@@ -901,7 +994,11 @@ export class APIService {
             nextToken
           }
           content
-          author
+          author {
+            __typename
+            userDataKey
+            username
+          }
           likes
           createdAt
           updatedAt
@@ -932,13 +1029,17 @@ export class APIService {
             id
             title
             content
-            author
             likes
             createdAt
             updatedAt
             blogPostsId
           }
           content
+          author {
+            __typename
+            userDataKey
+            username
+          }
           createdAt
           updatedAt
           postCommentsId
@@ -968,13 +1069,17 @@ export class APIService {
             id
             title
             content
-            author
             likes
             createdAt
             updatedAt
             blogPostsId
           }
           content
+          author {
+            __typename
+            userDataKey
+            username
+          }
           createdAt
           updatedAt
           postCommentsId
@@ -1004,13 +1109,17 @@ export class APIService {
             id
             title
             content
-            author
             likes
             createdAt
             updatedAt
             blogPostsId
           }
           content
+          author {
+            __typename
+            userDataKey
+            username
+          }
           createdAt
           updatedAt
           postCommentsId
@@ -1100,7 +1209,11 @@ export class APIService {
             nextToken
           }
           content
-          author
+          author {
+            __typename
+            userDataKey
+            username
+          }
           likes
           createdAt
           updatedAt
@@ -1128,11 +1241,20 @@ export class APIService {
             id
             title
             content
-            author
             likes
             createdAt
             updatedAt
             blogPostsId
+            author {
+              username
+              userDataKey
+              attributes {
+                email
+                email_verified
+                identities
+                sub
+              }
+            }
           }
           nextToken
         }
@@ -1162,13 +1284,17 @@ export class APIService {
             id
             title
             content
-            author
             likes
             createdAt
             updatedAt
             blogPostsId
           }
           content
+          author {
+            __typename
+            userDataKey
+            username
+          }
           createdAt
           updatedAt
           postCommentsId
@@ -1325,7 +1451,11 @@ export class APIService {
             nextToken
           }
           content
-          author
+          author {
+            __typename
+            userDataKey
+            username
+          }
           likes
           createdAt
           updatedAt
@@ -1365,7 +1495,11 @@ export class APIService {
             nextToken
           }
           content
-          author
+          author {
+            __typename
+            userDataKey
+            username
+          }
           likes
           createdAt
           updatedAt
@@ -1405,7 +1539,11 @@ export class APIService {
             nextToken
           }
           content
-          author
+          author {
+            __typename
+            userDataKey
+            username
+          }
           likes
           createdAt
           updatedAt
@@ -1437,13 +1575,17 @@ export class APIService {
             id
             title
             content
-            author
             likes
             createdAt
             updatedAt
             blogPostsId
           }
           content
+          author {
+            __typename
+            userDataKey
+            username
+          }
           createdAt
           updatedAt
           postCommentsId
@@ -1474,13 +1616,17 @@ export class APIService {
             id
             title
             content
-            author
             likes
             createdAt
             updatedAt
             blogPostsId
           }
           content
+          author {
+            __typename
+            userDataKey
+            username
+          }
           createdAt
           updatedAt
           postCommentsId
@@ -1511,13 +1657,17 @@ export class APIService {
             id
             title
             content
-            author
             likes
             createdAt
             updatedAt
             blogPostsId
           }
           content
+          author {
+            __typename
+            userDataKey
+            username
+          }
           createdAt
           updatedAt
           postCommentsId

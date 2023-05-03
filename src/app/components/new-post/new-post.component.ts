@@ -14,16 +14,15 @@ export class NewPostComponent {
     title: ['', [Validators.required]],
     content: ['', [Validators.required]],
     blogPostsId: this.blogFacade.blog!.id,
-    author: JSON.stringify(this.blogFacade.user),
+    author: this.blogFacade.user,
+    likes: new Array([this.blogFacade.user.userDataKey]),
   });
-
-  formValid$ = this.postForm.valueChanges.pipe(
-    map(() => Boolean(this.postForm.status === 'VALID'))
-  );
 
   constructor(private blogFacade: BlogFacade, private fb: FormBuilder) {}
 
   onSubmit() {
+    console.log(this.postForm.value);
+
     this.blogFacade.creatPost(this.postForm.value).subscribe();
   }
 }

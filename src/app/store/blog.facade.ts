@@ -1,4 +1,3 @@
-import { Post } from './../API.service';
 import { PostService } from './../services/post.service';
 import { BlogState } from './states/blog.state';
 import { BlogService } from './../services/blog.service';
@@ -15,12 +14,13 @@ import {
 } from 'rxjs';
 import { GetBlogQuery } from '../API.service';
 import { PostState } from './states/posts.state';
+import { Post, User } from '../models/post.interface';
 
 @Injectable({
   providedIn: 'root',
 })
 export class BlogFacade {
-  public user: any;
+  public user!: User;
 
   get blog$(): Observable<GetBlogQuery | null> {
     return this.blogState.blog$;
@@ -62,7 +62,7 @@ export class BlogFacade {
       take(1),
       tap((alertaRes) => {
         this.postState.isUpdating = true;
-        this.postState.createPost(alertaRes);
+        this.postState.createPost(alertaRes as Post);
       }),
       catchError((err) => {
         console.log(err);
@@ -104,20 +104,20 @@ export class BlogFacade {
 
   toggleLikePost(post: Post) {
     const index = this.postState.posts.indexOf(post);
-    let likes = post.likes?.map((like) => JSON.parse(like!)) || [];
-    likes = likes.find(
-      (like) => like.attributes.sub === this.user.attributes.sub
-    )
-      ? likes.filter((like) => like.attributes.sub !== this.user.attributes.sub)
-      : [...likes, this.user];
+    let likes = post.likes || [];
+
+    console.log(post.likes, this.user);
+    likes = likes.find((like) => like === this.user.userDataKey)
+      ? likes.filter((like) => like !== this.user.userDataKey)
+      : [...likes, this.user.userDataKey];
     return this.postService
       .updatePost({
         id: post.id,
-        likes: likes.map((like) => JSON.stringify(like!)),
+        likes,
       })
       .pipe(
         tap((res) => {
-          this.postState.updatePost(res, index);
+          this.postState.updatePost(res as Post, index);
         })
       );
   }

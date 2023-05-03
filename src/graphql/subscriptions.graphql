@@ -46,7 +46,10 @@ subscription OnCreatePost($filter: ModelSubscriptionPostFilterInput) {
       nextToken
     }
     content
-    author
+    author {
+      userDataKey
+      username
+    }
     likes
     createdAt
     updatedAt
@@ -67,7 +70,10 @@ subscription OnUpdatePost($filter: ModelSubscriptionPostFilterInput) {
       nextToken
     }
     content
-    author
+    author {
+      userDataKey
+      username
+    }
     likes
     createdAt
     updatedAt
@@ -88,7 +94,10 @@ subscription OnDeletePost($filter: ModelSubscriptionPostFilterInput) {
       nextToken
     }
     content
-    author
+    author {
+      userDataKey
+      username
+    }
     likes
     createdAt
     updatedAt
@@ -102,13 +111,16 @@ subscription OnCreateComment($filter: ModelSubscriptionCommentFilterInput) {
       id
       title
       content
-      author
       likes
       createdAt
       updatedAt
       blogPostsId
     }
     content
+    author {
+      userDataKey
+      username
+    }
     createdAt
     updatedAt
     postCommentsId
@@ -121,13 +133,16 @@ subscription OnUpdateComment($filter: ModelSubscriptionCommentFilterInput) {
       id
       title
       content
-      author
       likes
       createdAt
       updatedAt
       blogPostsId
     }
     content
+    author {
+      userDataKey
+      username
+    }
     createdAt
     updatedAt
     postCommentsId
@@ -140,13 +155,16 @@ subscription OnDeleteComment($filter: ModelSubscriptionCommentFilterInput) {
       id
       title
       content
-      author
       likes
       createdAt
       updatedAt
       blogPostsId
     }
     content
+    author {
+      userDataKey
+      username
+    }
     createdAt
     updatedAt
     postCommentsId
