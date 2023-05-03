@@ -105,8 +105,6 @@ export class BlogFacade {
   toggleLikePost(post: Post) {
     const index = this.postState.posts.indexOf(post);
     let likes = post.likes || [];
-
-    console.log(post.likes, this.user);
     likes = likes.find((like) => like === this.user.userDataKey)
       ? likes.filter((like) => like !== this.user.userDataKey)
       : [...likes, this.user.userDataKey];

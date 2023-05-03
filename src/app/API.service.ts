@@ -1207,6 +1207,20 @@ export class APIService {
           comments {
             __typename
             nextToken
+            items {
+              author {
+                attributes {
+                  email
+                  email_verified
+                  identities
+                  sub
+                }
+                userDataKey
+                username
+              }
+              content
+              createdAt
+            }
           }
           content
           author {

@@ -1,6 +1,7 @@
-<mat-drawer-container class="drawer-container" autosize>
+<mat-drawer-container class="drawer-container" autosize hasBackdrop>
   <p3-nav [drawer]="drawer"></p3-nav>
   <mat-drawer #drawer class="drawer-sidenav" mode="side" position="end">
+    <mat-icon (click)="drawer.close()" >close</mat-icon>
     <h2 (click)="log(blogFacade.user)">{{ blogFacade.user.username }}</h2>
     <!-- <span *ngIf="showFiller">{{ blogFacade.user.attributes.email }}</span> -->
     <button (click)="showFiller = !showFiller" mat-raised-button>

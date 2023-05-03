@@ -1,5 +1,40 @@
+<section class="details-container" *ngIf="post$ | async as post">
 
-<button (click)="navigateBack()">Back</button>
-<p>
-  {{ (someShit$ | async)?.title }}
-</p>
+  <div class="post-info">
+    <!-- <mat-icon (click)="navigateBack()">assignment_return</mat-icon> -->
+    <sub>
+      {{ post?.blog?.name }}
+    </sub>
+    <h6>
+      {{ post?.author?.username }}
+    </h6>
+    <h1>
+      {{ post?.title }}
+    </h1>
+    <p>
+      {{ post?.content }}
+    </p>
+  </div>
+
+  <section *ngFor="let comment of post?.comments.items" class="post-info">
+    <h5>{{ comment.author.username }}</h5>
+    <h6>{{ comment.createdAt | date : "h:mm dd LLL y" }}</h6>
+    <h4>{{ comment.content }}</h4>
+  </section>
+
+  <form [formGroup]="commentForm" (submit)="submit()">
+    <mat-form-field class="form-field">
+      <mat-label>Comment</mat-label>
+      <textarea
+        rows="5"
+        formControlName="content"
+        matInput
+        placeholder="Type your comment"
+      ></textarea>
+    </mat-form-field>
+
+    <button mat-button [disabled]="!commentForm.valid" type="submit">
+      Comment
+    </button>
+  </form>
+</section>

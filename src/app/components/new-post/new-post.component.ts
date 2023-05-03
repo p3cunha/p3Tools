@@ -21,8 +21,6 @@ export class NewPostComponent {
   constructor(private blogFacade: BlogFacade, private fb: FormBuilder) {}
 
   onSubmit() {
-    console.log(this.postForm.value);
-
     this.blogFacade.creatPost(this.postForm.value).subscribe();
   }
 }
