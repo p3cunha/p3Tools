@@ -440,14 +440,31 @@ export type CreateCommentMutation = {
   id: string;
   post?: {
     __typename: "Post";
+  id: string;
+  title: string;
+  blog?: {
+    __typename: "Blog";
     id: string;
-    title: string;
-    content: string;
-    likes?: Array<string | null> | null;
+    name: string;
     createdAt: string;
     updatedAt: string;
-    blogPostsId?: string | null;
   } | null;
+  comments?: {
+    __typename: "ModelCommentConnection";
+    nextToken?: string | null;
+    items: Array<Comment>
+  } | null;
+  content: string;
+  author: {
+    __typename: "User";
+    userDataKey: string;
+    username: string;
+  };
+  likes?: Array<string | null> | null;
+  createdAt: string;
+  updatedAt: string;
+  blogPostsId?: string | null;
+  };
   content: string;
   author: {
     __typename: "User";
@@ -545,6 +562,7 @@ export type GetPostQuery = {
   comments?: {
     __typename: "ModelCommentConnection";
     nextToken?: string | null;
+    items: Array<Comment>
   } | null;
   content: string;
   author: {
@@ -1022,27 +1040,31 @@ export class APIService {
   ): Promise<CreateCommentMutation> {
     const statement = `mutation CreateComment($input: CreateCommentInput!, $condition: ModelCommentConditionInput) {
         createComment(input: $input, condition: $condition) {
-          __typename
-          id
           post {
-            __typename
             id
             title
+            blog {
+              id
+              name
+            }
+            comments(sortDirection: ASC) {
+              items {
+                author {
+                  userDataKey
+                  username
+                }
+                content
+                createdAt
+              }
+            }
             content
-            likes
+            author {
+              userDataKey
+              username
+            }
             createdAt
             updatedAt
-            blogPostsId
           }
-          content
-          author {
-            __typename
-            userDataKey
-            username
-          }
-          createdAt
-          updatedAt
-          postCommentsId
         }
       }`;
     const gqlAPIServiceArguments: any = {
@@ -1142,9 +1164,34 @@ export class APIService {
           __typename
           id
           name
-          posts {
+          posts(sortDirection: ASC) {
             __typename
             nextToken
+            items {
+              __typename
+              id
+              title
+              content
+              likes
+              createdAt
+              updatedAt
+              blogPostsId
+              author {
+                username
+                userDataKey
+                attributes {
+                  email
+                  email_verified
+                  identities
+                  sub
+                }
+              }
+              comments {
+                items {
+                  id
+                }
+              }
+            }
           }
           createdAt
           updatedAt
@@ -1204,7 +1251,7 @@ export class APIService {
             createdAt
             updatedAt
           }
-          comments {
+          comments(sortDirection: ASC) {
             __typename
             nextToken
             items {

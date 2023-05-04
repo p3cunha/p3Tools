@@ -1,7 +1,7 @@
 import { APIService } from 'src/app/API.service';
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable, from, tap } from 'rxjs';
+import { from, map, tap } from 'rxjs';
 import { BlogFacade } from 'src/app/store/blog.facade';
 import { Post } from 'src/app/models/post.interface';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -16,22 +16,14 @@ export class PostDetailsComponent {
   commentForm: FormGroup = this.fb.group({
     content: ['', [Validators.required]],
     postCommentsId: [null],
-    author: this.blogFacade.user
+    author: this.blogFacade.user,
   });
 
-  post$: Observable<any> = from(
+  post$ = from(
     this.api.GetPost((this.activatedRoute.snapshot.params as Post).id)
   ).pipe(
-    tap((post) => {
-      console.log('post', post);
-
-      this.commentForm.patchValue({ postCommentsId: post.id })
-
-      console.log('post', this.commentForm);
-
-    })
-  );
-
+    tap((post) => this.commentForm.patchValue({ postCommentsId: post.id }))
+  ).pipe(tap(console.log));;
 
   constructor(
     private blogFacade: BlogFacade,
@@ -46,11 +38,8 @@ export class PostDetailsComponent {
   }
 
   submit() {
-
-    console.log(
-      this.commentForm.value
-      );
-
-      this.api.CreateComment(this.commentForm.value);
+    this.post$ = from(this.api.CreateComment(this.commentForm.value)).pipe(
+      map(({ post }) => post!)
+    ).pipe(tap(console.log));
   }
 }

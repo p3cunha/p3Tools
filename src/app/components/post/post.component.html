@@ -8,7 +8,7 @@
   <section (click)="goToPostDetails(post.id!)">
     <mat-card-title>{{ post.title | titlecase }}</mat-card-title>
     <mat-card-subtitle>{{
-      (post.author).username | titlecase
+      post.author.username | titlecase
     }}</mat-card-subtitle>
     <mat-card-content>
       <p>{{ post.content }}</p>
@@ -16,12 +16,18 @@
   </section>
   <mat-divider inset></mat-divider>
   <mat-card-actions>
-    <span class="likes-counter">{{ post.likes | getLength }}</span>
-    <p3-icon
+    <div class="action">
+      <p3-icon
       icon="thumb_up_alt"
       [selected]="verifyLike()"
       (click)="likePost()"
-    ></p3-icon>
+      ></p3-icon>
+      <span class="likes-counter">{{ post.likes | getLength }}</span>
+    </div>
+    <div class="action">
+      <p3-icon icon="comment" (click)="goToPostDetails(post.id!)"></p3-icon>
+      <span class="likes-counter">{{ post.comments?.items | getLength }}</span>
+    </div>
     <p3-icon icon="share"></p3-icon>
   </mat-card-actions>
 </mat-card>

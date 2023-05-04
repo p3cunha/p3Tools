@@ -43,7 +43,7 @@ export class BlogFacade {
     if (!this.blogState.blog)
       return this.blogService.getBlog().pipe(
         tap(console.log),
-        tap((blog) => (this.blogState.blog = blog))
+        tap((blog) => (this.blogState.blog = blog, this.postState.posts = blog.posts.items))
       );
     else return of();
   }
