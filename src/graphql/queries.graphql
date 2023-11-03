@@ -3,8 +3,34 @@ query GetBlog($id: ID!) {
   getBlog(id: $id) {
     id
     name
-    posts {
+    posts(sortDirection: ASC) {
+      __typename
       nextToken
+      items {
+        __typename
+        id
+        title
+        content
+        likes
+        createdAt
+        updatedAt
+        blogPostsId
+        author {
+          username
+          userDataKey
+          attributes {
+            email
+            email_verified
+            identities
+            sub
+          }
+        }
+        comments {
+          items {
+            id
+          }
+        }
+      }
     }
     createdAt
     updatedAt
@@ -35,9 +61,24 @@ query GetPost($id: ID!) {
       createdAt
       updatedAt
     }
-    comments {
-      nextToken
-    }
+    comments(sortDirection: ASC) {
+            __typename
+            nextToken
+            items {
+              author {
+                attributes {
+                  email
+                  email_verified
+                  identities
+                  sub
+                }
+                userDataKey
+                username
+              }
+              content
+              createdAt
+            }
+          }
     content
     author {
       userDataKey
@@ -63,6 +104,16 @@ query ListPosts(
       createdAt
       updatedAt
       blogPostsId
+      author {
+              username
+              userDataKey
+              attributes {
+                email
+                email_verified
+                identities
+                sub
+              }
+      }
     }
     nextToken
   }
@@ -72,12 +123,20 @@ query GetComment($id: ID!) {
     id
     post {
       id
-      title
-      content
-      likes
-      createdAt
-      updatedAt
-      blogPostsId
+            title
+            blog {
+              id
+              name
+            }
+            comments(sortDirection: ASC) {
+              items {
+                author {
+                  userDataKey
+                  username
+                }
+                content
+                createdAt
+              }
     }
     content
     author {

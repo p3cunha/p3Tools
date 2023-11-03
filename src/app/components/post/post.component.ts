@@ -30,7 +30,7 @@ export class PostComponent {
 
   verifyLike() {
     return Boolean(
-      this.post.likes.find((like) => like === this.blogFacade.user.userDataKey)
+      this.post.likes?.find((like) => like === this.blogFacade.user.userDataKey)
     );
   }
 
