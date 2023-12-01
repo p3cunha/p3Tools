@@ -18,6 +18,10 @@ export class NavbarComponent {
   blog$ = this.blogFacade.blog$;
 
   constructor(private blogFacade: BlogFacade) {}
+
+  refresh() {
+    window.location.reload();
+  }
 }
 
 @NgModule({
@@ -25,4 +29,5 @@ export class NavbarComponent {
   exports: [NavbarComponent, OverlayModule, MatMenuModule],
   declarations: [NavbarComponent],
 })
-export class NavbarModule {}
+export class NavbarModule {
+}

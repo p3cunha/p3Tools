@@ -2,6 +2,9 @@
   <a mat-button href="">
     <mat-icon> cottage </mat-icon>
   </a>
+  <a (click)="refresh()">
+    <mat-icon> refresh </mat-icon>
+  </a>
   <div class="flex-spencer"></div>
   <mat-icon> attractions </mat-icon>
   <span>{{(blog$ | async)?.name}}</span>
